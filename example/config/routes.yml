@@ -1,5 +1,7 @@
 _global:
   title: 'Example Site'
+_layout: 'layout'
+
 index:
   pieces:
     - post: { title: 'A block title' }
