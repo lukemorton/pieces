@@ -1,9 +1,25 @@
 _global:
-  title: 'Example Site'
+  footer_text: 'By Luke Morton'
+
 _layout: 'layout'
 
 index:
+  _global:
+    title: 'Home Page | Example Site'
   pieces:
-    - post: { title: 'A block title' }
-    - post: { title: 'Another' }
-    - post: { title: 'And another' }
+    - post:
+        title: 'A block title'
+        content: '<p>Some paragraph</p>'
+    - post:
+        title: 'Another'
+        content: '<p>Another thing.</p>'
+    - post:
+        title: 'And another'
+        content: '<p>Blah blah blah.</p>'
+about:
+  _global:
+    'About | Example Site'
+  pieces:
+    - post:
+        title: 'About Author'
+        content: '<p>He is a cool dude.</p>'
