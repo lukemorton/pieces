@@ -18,7 +18,7 @@ index:
         content: '<p>Blah blah blah.</p>'
 about:
   _global:
-    'About | Example Site'
+    title: 'About | Example Site'
   pieces:
     - post:
         title: 'About Author'

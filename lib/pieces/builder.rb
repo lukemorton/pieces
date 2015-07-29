@@ -31,19 +31,20 @@ module Pieces
     def build_route(files, name, route)
       route['pieces'].reduce(files) do |files, piece|
         piece, data = piece.keys.first, piece.values.first
+        route_globals = globals.merge(route.delete('_global') || {})
 
         Dir["pieces/#{piece}/*"].each do |file|
           case File.extname(file)
           when '.mustache'
             files["#{name}.html"] = { contents: '', type: 'mustache' } unless files.has_key?("#{name}.html")
-            files["#{name}.html"][:contents] << Mustache.render(File.read(file), globals.merge(data))
+            files["#{name}.html"][:contents] << Mustache.render(File.read(file), route_globals.merge(data))
           when '.css'
             files['compiled.css'] = { contents: '', type: 'css' } unless files.has_key?('compiled.css')
             files['compiled.css'][:contents] << File.read(file)
           end
         end
 
-        files.tap { |r| p r }
+        files
       end
     end
 
