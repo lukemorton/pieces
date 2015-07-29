@@ -1,5 +1,5 @@
-require "pieces/version"
+require 'pieces/version'
+require 'pieces/builder'
 
 module Pieces
-  # Your code goes here...
 end

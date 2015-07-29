@@ -1,0 +1,7 @@
+_global:
+  title: 'Example Site'
+index:
+  pieces:
+    - post: { title: 'A block title' }
+    - post: { title: 'Another' }
+    - post: { title: 'And another' }
