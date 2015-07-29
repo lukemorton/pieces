@@ -1,11 +1,11 @@
 _global:
-  footer_text: 'By Luke Morton'
+  title_suffix: 'Your Site'
 
 _layout: 'layout'
 
 index:
   _global:
-    title: 'Home Page | Example Site'
+    title: 'Home'
   pieces:
     - post:
         title: 'A block title'
@@ -16,9 +16,10 @@ index:
     - post:
         title: 'And another'
         content: '<p>Blah blah blah.</p>'
+
 about:
   _global:
-    title: 'About | Example Site'
+    title: 'About'
   pieces:
     - post:
         title: 'About Author'
