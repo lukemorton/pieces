@@ -29,15 +29,16 @@ pieces init styleguide
 
 This will install pieces inside a subfolder called `styleguide/`.
 
-## Usage
+## Building your site
 
-TODO: Write usage instructions here
+Please follow examples for a howto right now. Once you've built the pieces
+and routes for your site all you have to do is run:
 
-## Development
+```
+pieces build
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Make sure you run this from your pieces directory!
 
 ## Contributing
 
@@ -46,3 +47,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Author
+
+Luke Morton (again)
