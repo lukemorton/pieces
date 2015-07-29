@@ -3,18 +3,31 @@
 This gem will take your HTML and CSS components and compile them into a static
 site. Very very alpha.
 
-## Installation
+## Create new static site
 
-Add this line to your application's Gemfile:
+To create a new static site with pieces:
+
+```
+gem install pieces
+pieces init
+```
+
+## Create styleguide within existing application
+
+Add pieces to your Gemfile:
 
 ```ruby
 gem 'pieces'
 ```
 
-And then execute:
+Then run
 
-    $ bundle
-    $ pieces init
+```
+bundle
+pieces init styleguide
+```
+
+This will install pieces inside a subfolder called `styleguide/`.
 
 ## Usage
 
