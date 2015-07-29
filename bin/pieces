@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'pieces'
+
+case ARGV[0]
+when 'init'
+  init_path = ARGV[1] || '.'
+  Pieces::Generator.new.init(path: init_path)
+  puts "Pieces placed in #{init_path}"
+when 'build'
+  print 'Building pieces into current directory...'
+  Pieces::Builder.new.build(path: '.')
+  puts 'done.'
+else
+  puts 'Run either `pieces init` or `pieces build`'
+end
