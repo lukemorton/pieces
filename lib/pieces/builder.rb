@@ -39,8 +39,11 @@ module Pieces
             files["#{name}.html"] = { contents: '', type: 'mustache' } unless files.has_key?("#{name}.html")
             files["#{name}.html"][:contents] << Mustache.render(File.read(file), route_globals.merge(data))
           when '.css'
-            files['compiled.css'] = { contents: '', type: 'css' } unless files.has_key?('compiled.css')
-            files['compiled.css'][:contents] << File.read(file)
+            files['compiled.css'] = { contents: '', type: 'css', compiled: [] } unless files.has_key?('compiled.css')
+            unless files['compiled.css'][:compiled].include?(file)
+              files['compiled.css'][:contents] << File.read(file)
+              files['compiled.css'][:compiled] << file
+            end
           end
         end
 
