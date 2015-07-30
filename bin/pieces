@@ -14,4 +14,5 @@ when 'build'
   puts 'done.'
 else
   puts 'Run either `pieces init` or `pieces build`'
+  exit(1)
 end
