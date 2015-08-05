@@ -16,11 +16,11 @@ Gem::Specification.new do |spec|
   spec.executables   = ['pieces']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'mustache'
   spec.add_dependency 'tilt', '~> 2.0.1'
 
   spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'codeclimate-test-reporter'
+  spec.add_development_dependency 'mustache'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'codeclimate-test-reporter'
 end
