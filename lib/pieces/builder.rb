@@ -52,9 +52,9 @@ module Pieces
       return '' unless parent_data.has_key?('_pieces')
 
       parent_data['_pieces'].reduce('') do |content, piece|
-        piece, data = piece.keys.first, parent_data.merge(piece.values.first)
-        # data.merge!(:yield => yield_route_pieces(data))
-        content << Tilt.new(piece_path(piece)).render(data['_global'].merge(data))
+        piece, data = piece.keys.first, piece.values.first
+        data['_global'] = (parent_data['_global'] || {}).merge(data['_global'] || {})
+        content << Tilt.new(piece_path(piece)).render(data['_global'].merge(data)) { yield_route_pieces(data) }
       end
     end
 

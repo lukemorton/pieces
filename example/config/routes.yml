@@ -8,15 +8,17 @@ index:
   _pieces:
     - layout:
         _pieces:
-          - post:
-              title: 'A block title'
-              content: '<p>Some paragraph</p>'
-          - post:
-              title: 'Another'
-              content: '<p>Another thing.</p>'
-          - post:
-              title: 'And another'
-              content: '<p>Blah blah blah.</p>'
+          - posts:
+              _pieces:
+                - post:
+                    title: 'A block title'
+                    content: '<p>Some paragraph</p>'
+                - post:
+                    title: 'Another'
+                    content: '<p>Another thing.</p>'
+                - post:
+                    title: 'And another'
+                    content: '<p>Blah blah blah.</p>'
 
 about:
   _global:
