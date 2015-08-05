@@ -20,6 +20,7 @@ index:
                 - posts/post:
                     title: 'And another'
                     content: '<p>Blah blah blah.</p>'
+          - footer: {}
 
 about:
   _global:
@@ -31,3 +32,4 @@ about:
           - posts/post:
               title: 'About Author'
               content: '<p>He is a cool dude.</p>'
+          - footer: {}

@@ -45,7 +45,7 @@ module Pieces
     end
 
     def piece_path(piece)
-      Dir["pieces/{#{piece},#{piece}/#{piece}}.html.*"].first
+      Dir["pieces/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
     end
 
     def yield_route_pieces(parent_data)
