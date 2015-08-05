@@ -1,6 +1,6 @@
 describe Pieces::Builder do
   before(:each) { described_class.new.build(path: 'example') }
-  # after(:each) { FileUtils.rm_rf('example/build') }
+  after(:each) { FileUtils.rm_rf('example/build') }
 
   context 'when building example site' do
     subject { Dir['example/build/*'] }
