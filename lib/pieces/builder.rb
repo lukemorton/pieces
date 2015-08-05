@@ -1,5 +1,4 @@
 require 'yaml'
-require 'mustache'
 
 module Pieces
   class Builder
@@ -35,15 +34,16 @@ module Pieces
 
         Dir["pieces/#{piece}/*"].each do |file|
           case File.extname(file)
-          when '.mustache'
-            files["#{name}.html"] = { contents: '', type: 'mustache' } unless files.has_key?("#{name}.html")
-            files["#{name}.html"][:contents] << Mustache.render(File.read(file), route_globals.merge(data))
-          when '.css'
+          when '.css', '.scss', '.sass', '.less'
             files['compiled.css'] = { contents: '', type: 'css', compiled: [] } unless files.has_key?('compiled.css')
+
             unless files['compiled.css'][:compiled].include?(file)
-              files['compiled.css'][:contents] << File.read(file)
+              files['compiled.css'][:contents] << Tilt.new(file).render
               files['compiled.css'][:compiled] << file
             end
+          else
+            files["#{name}.html"] = { contents: '', type: 'mustache' } unless files.has_key?("#{name}.html")
+            files["#{name}.html"][:contents] << Tilt.new(file).render(route_globals.merge(data))
           end
         end
 
