@@ -61,10 +61,14 @@ module Pieces
     def save_files(files)
       FileUtils.rm_rf('build')
       Dir.mkdir('build')
-      files.each { |name, file| save_file(name, file) }
+
+      files.each do |name, file|
+        save_file(name, file)
+      end
     end
 
     def save_file(name, file)
+      FileUtils.mkdir_p(File.dirname("build/#{name}"))
       File.open("build/#{name}", 'w') { |f| f.write(file[:contents]) }
     end
   end
