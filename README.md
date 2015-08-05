@@ -121,6 +121,10 @@ The child pieces will be rendered in order and passed into the parent
 </html>
 ```
 
+## More Examples
+
+For more examples please see: https://github.com/drpheltright/pieces/tree/master/example
+
 ## Contributing
 
 1. Fork it ( https://github.com/drpheltright/pieces/fork )
