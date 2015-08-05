@@ -13,8 +13,10 @@ To create a new static site with pieces:
 
 ```
 gem install pieces
-pieces init
+pieces init hello_world
 ```
+
+This will install some boiler plate in `hello_world/`.
 
 ## Create styleguide within existing application
 
