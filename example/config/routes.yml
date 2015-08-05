@@ -1,26 +1,29 @@
 _global:
   title_suffix: 'Your Site'
-
-_layout: 'layout'
+  footer_text: 'Hey'
 
 index:
   _global:
     title: 'Home'
-  pieces:
-    - post:
-        title: 'A block title'
-        content: '<p>Some paragraph</p>'
-    - post:
-        title: 'Another'
-        content: '<p>Another thing.</p>'
-    - post:
-        title: 'And another'
-        content: '<p>Blah blah blah.</p>'
+  _pieces:
+    - layout:
+        _pieces:
+          - post:
+              title: 'A block title'
+              content: '<p>Some paragraph</p>'
+          - post:
+              title: 'Another'
+              content: '<p>Another thing.</p>'
+          - post:
+              title: 'And another'
+              content: '<p>Blah blah blah.</p>'
 
 about:
   _global:
     title: 'About'
-  pieces:
-    - post:
-        title: 'About Author'
-        content: '<p>He is a cool dude.</p>'
+  _pieces:
+    - layout:
+        _pieces:
+          - post:
+              title: 'About Author'
+              content: '<p>He is a cool dude.</p>'

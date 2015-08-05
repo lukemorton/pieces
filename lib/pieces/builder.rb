@@ -4,8 +4,7 @@ module Pieces
   class Builder
     def build(config)
       Dir.chdir(config[:path]) do
-        files = routes.reduce({}) { |files, (name, route)| build_route(files, name, route) }
-        save_files(render_files_in_layout(files))
+        save_files(routes.reduce({}) { |files, (name, route)| build_route(files, name, route) })
       end
     end
 
@@ -13,10 +12,6 @@ module Pieces
 
     def route_config
       @route_config ||= YAML.load_file('config/routes.yml')
-    end
-
-    def layout_path
-      "layouts/#{route_config['_layout']}.html.mustache"
     end
 
     def globals
@@ -28,26 +23,38 @@ module Pieces
     end
 
     def build_route(files, name, route)
-      route['pieces'].reduce(files) do |files, piece|
+      route['_pieces'].reduce(files) do |files, piece|
         piece, data = piece.keys.first, piece.values.first
-        route_globals = globals.merge(route.delete('_global') || {})
+        data['_global'] = globals.merge(route.delete('_global') || {}).merge(data['_global'] || {})
 
-        Dir["pieces/#{piece}/*"].each do |file|
-          case File.extname(file)
-          when '.css', '.scss', '.sass', '.less'
-            files['compiled.css'] = { contents: '', type: 'css', compiled: [] } unless files.has_key?('compiled.css')
+        Dir["pieces/*/*.{css,scss,sass,less}"].each do |file|
+          files['compiled.css'] = { contents: '', type: 'css', compiled: [] } unless files.has_key?('compiled.css')
 
-            unless files['compiled.css'][:compiled].include?(file)
-              files['compiled.css'][:contents] << Tilt.new(file).render
-              files['compiled.css'][:compiled] << file
-            end
-          else
-            files["#{name}.html"] = { contents: '', type: 'mustache' } unless files.has_key?("#{name}.html")
-            files["#{name}.html"][:contents] << Tilt.new(file).render(route_globals.merge(data))
+          unless files['compiled.css'][:compiled].include?(file)
+            files['compiled.css'][:contents] << Tilt.new(file).render
+            files['compiled.css'][:compiled] << file
           end
         end
 
+        files["#{name}.html"] = { contents: '', type: 'html' } unless files.has_key?("#{name}.html")
+        content = Tilt.new(piece_path(piece)).render(data['_global'].merge(data)) { yield_route_pieces(data) }
+        files["#{name}.html"][:contents] << content
+
         files
+      end
+    end
+
+    def piece_path(piece)
+      Dir["pieces/#{piece}/#{piece}.html.*"].first
+    end
+
+    def yield_route_pieces(parent_data)
+      return '' unless parent_data.has_key?('_pieces')
+
+      parent_data['_pieces'].reduce('') do |content, piece|
+        piece, data = piece.keys.first, parent_data.merge(piece.values.first)
+        # data.merge!(:yield => yield_route_pieces(data))
+        content << Tilt.new(piece_path(piece)).render(data['_global'].merge(data))
       end
     end
 
@@ -59,20 +66,6 @@ module Pieces
 
     def save_file(name, file)
       File.open("build/#{name}", 'w') { |f| f.write(file[:contents]) }
-    end
-
-    def render_in_layout(contents)
-      Mustache.render(File.read(layout_path), globals.merge(contents: contents))
-    end
-
-    def render_files_in_layout(files)
-      files.reduce({}) do |files, (name, file)|
-        if file[:type] == 'mustache'
-          file[:contents] = render_in_layout(file[:contents])
-        end
-
-        files.merge(name => file)
-      end
     end
   end
 end
