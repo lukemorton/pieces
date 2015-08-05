@@ -8,6 +8,7 @@ index:
   _pieces:
     - layout:
         _pieces:
+          - header: {}
           - posts:
               _pieces:
                 - post:
@@ -26,6 +27,7 @@ about:
   _pieces:
     - layout:
         _pieces:
+          - header: {}
           - post:
               title: 'About Author'
               content: '<p>He is a cool dude.</p>'
