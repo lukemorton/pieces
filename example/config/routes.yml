@@ -6,18 +6,18 @@ index:
   _global:
     title: 'Home'
   _pieces:
-    - layout:
+    - layouts/layout:
         _pieces:
           - header: {}
           - posts:
               _pieces:
-                - post:
+                - posts/post:
                     title: 'A block title'
                     content: '<p>Some paragraph</p>'
-                - post:
+                - posts/post:
                     title: 'Another'
                     content: '<p>Another thing.</p>'
-                - post:
+                - posts/post:
                     title: 'And another'
                     content: '<p>Blah blah blah.</p>'
 
@@ -25,9 +25,9 @@ about:
   _global:
     title: 'About'
   _pieces:
-    - layout:
+    - layouts/layout:
         _pieces:
           - header: {}
-          - post:
+          - posts/post:
               title: 'About Author'
               content: '<p>He is a cool dude.</p>'
