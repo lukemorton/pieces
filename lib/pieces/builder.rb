@@ -1,3 +1,4 @@
+require 'ostruct'
 require 'yaml'
 
 module Pieces
@@ -37,7 +38,8 @@ module Pieces
         end
 
         files["#{name}.html"] = { contents: '', type: 'html' } unless files.has_key?("#{name}.html")
-        content = Tilt.new(piece_path(piece)).render(data['_global'].merge(data)) { yield_route_pieces(data) }
+        view_model = OpenStruct.new(data['_global'].merge(data))
+        content = Tilt.new(piece_path(piece)).render(view_model) { yield_route_pieces(data) }
         files["#{name}.html"][:contents] << content
 
         files
@@ -54,7 +56,8 @@ module Pieces
       parent_data['_pieces'].reduce('') do |content, piece|
         piece, data = piece.keys.first, piece.values.first
         data['_global'] = (parent_data['_global'] || {}).merge(data['_global'] || {})
-        content << Tilt.new(piece_path(piece)).render(data['_global'].merge(data)) { yield_route_pieces(data) }
+        view_model = OpenStruct.new(data['_global'].merge(data))
+        content << Tilt.new(piece_path(piece)).render(view_model) { yield_route_pieces(data) }
       end
     end
 
