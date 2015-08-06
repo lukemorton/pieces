@@ -1,0 +1,10 @@
+_global:
+  title: 'Your Site'
+  footer: 'Hey'
+
+index:
+  _pieces:
+    - layouts/application:
+        _pieces:
+          - header: {}
+          - footer: {}
