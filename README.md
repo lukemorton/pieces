@@ -123,7 +123,11 @@ The child pieces will be rendered in order and passed into the parent
 
 ## More Examples
 
-For more examples please see: https://github.com/drpheltright/pieces/tree/master/example
+ - [Original example][original] using .erb and .mustache (liek wtf!)
+ - [Boilerplate example][boilerplate] used by `pieces init`
+
+[original]: https://github.com/drpheltright/pieces/tree/master/examples/original
+[boilerplate]: https://github.com/drpheltright/pieces/tree/master/examples/boilerplate
 
 ## Contributing
 
