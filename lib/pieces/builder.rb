@@ -24,18 +24,11 @@ module Pieces
     end
 
     def build_route(files, name, route)
+      StyleCompiler.compile(files)
+
       route['_pieces'].reduce(files) do |files, piece|
         piece, data = piece.keys.first, piece.values.first
         data['_global'] = globals.merge(route.delete('_global') || {}).merge(data['_global'] || {})
-
-        Dir["pieces/*/*.{css,scss,sass,less}"].each do |file|
-          files['compiled.css'] = { contents: '', type: 'css', compiled: [] } unless files.has_key?('compiled.css')
-
-          unless files['compiled.css'][:compiled].include?(file)
-            files['compiled.css'][:contents] << Tilt.new(file).render
-            files['compiled.css'][:compiled] << file
-          end
-        end
 
         files["#{name}.html"] = { contents: '', type: 'html' } unless files.has_key?("#{name}.html")
         view_model = OpenStruct.new(data['_global'].merge(data))
