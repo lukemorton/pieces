@@ -15,23 +15,4 @@ describe Pieces::Builder do
       it { is_expected.to include('compiled.css') }
     end
   end
-
-  context 'when compiling index.html from Mustache templates' do
-    let(:index_html) { File.read('examples/original/build/index.html') }
-
-    def index_template(title, content)
-      %Q{<article class="post">
-  <h1 class="post__title">#{title}</h1>
-
-  <div class="post__content">
-    #{content}
-  </div>
-</article>}
-    end
-
-    subject { index_html }
-
-    it { is_expected.to include(index_template('A block title', '<p>Some paragraph</p>')) }
-  end
-
 end
