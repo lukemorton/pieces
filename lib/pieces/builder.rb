@@ -5,11 +5,15 @@ module Pieces
   class Builder
     def build(config)
       Dir.chdir(config[:path]) do
-        save_files(routes.reduce({}) { |files, (name, route)| build_route(files, name, route) })
+        save_files(build_files)
       end
     end
 
     private
+
+    def build_files
+      routes.reduce({}) { |files, (name, route)| build_route(files, name, route) }
+    end
 
     def route_config
       @route_config ||= YAML.load_file('config/routes.yml')
