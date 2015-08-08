@@ -5,7 +5,47 @@
 [![Test Coverage](https://codeclimate.com/github/drpheltright/pieces/badges/coverage.svg)](https://codeclimate.com/github/drpheltright/pieces/coverage)
 
 This gem will take your HTML and CSS components and compile them into a static
-site. Very very alpha.
+site. This can be useful for simple sites, including blogs, as well as building
+styleguides for your rails applications.
+
+## Define your HTML and CSS in the same folder
+
+With pieces, you define the view of your application with components. Even
+your layout is just another component.
+
+**`pieces/article/article.html.erb`**
+
+``` erb
+<article class="article">
+  <h1 class="article__title"><%= title %></h1>
+  <div class="article__content"><%= content %></div>
+</article>
+```
+
+**`pieces/layouts/application.html.erb`**
+
+``` erb
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
+```
+
+To stitch your components into a static site, you define a `config/routes.yml`:
+
+``` yml
+index:
+  _pieces:
+    - layouts/application:
+        title: 'My Articles'
+        _pieces:
+          - article: { title: 'A title', content: '<p>Content.</p>' }
+          - article: { title: 'Another title', content: '<p>More content.</p>' }
+```
 
 ## Create new static site
 
@@ -16,7 +56,8 @@ gem install pieces
 pieces init hello_world
 ```
 
-This will install some boiler plate in `hello_world/`.
+This will install `config/routes.yml`, a layout and example header and footer
+into `hello_world/` for you.
 
 ## Building your site
 
