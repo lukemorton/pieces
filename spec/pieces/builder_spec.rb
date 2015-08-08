@@ -34,11 +34,4 @@ describe Pieces::Builder do
     it { is_expected.to include(index_template('A block title', '<p>Some paragraph</p>')) }
   end
 
-  context 'when building CSS' do
-    let(:css) { File.read('examples/original/build/compiled.css') }
-
-    it 'should compile all CSS in pieces referenced in routes.yml' do
-      expect(css).to eq(".post {\n  padding: 1em;\n}\n")
-    end
-  end
 end

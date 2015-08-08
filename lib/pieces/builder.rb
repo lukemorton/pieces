@@ -24,7 +24,7 @@ module Pieces
     end
 
     def build_route(files, name, route)
-      StyleCompiler.compile(files)
+      StyleCompiler.new.compile(files)
       RouteCompiler.compile(files, name, route, globals)
     end
 
