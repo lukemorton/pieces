@@ -1,5 +1,6 @@
 # Pieces
 
+[![Gem Version](https://badge.fury.io/rb/pieces.svg)](http://badge.fury.io/rb/pieces)
 [![Build Status](https://travis-ci.org/drpheltright/pieces.svg)](https://travis-ci.org/drpheltright/pieces)
 [![Code Climate](https://codeclimate.com/github/drpheltright/pieces/badges/gpa.svg)](https://codeclimate.com/github/drpheltright/pieces)
 [![Test Coverage](https://codeclimate.com/github/drpheltright/pieces/badges/coverage.svg)](https://codeclimate.com/github/drpheltright/pieces/coverage)
