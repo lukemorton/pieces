@@ -9,7 +9,7 @@ This gem will take your HTML and CSS components and compile them into a static
 site.
 
  - Build static sites and blogs
- - Produce styleguides for your rails applications
+ - Produce styleguides for your rails applications – [read how to](#use-as-styleguide-for-rails)
  - Mock up designs
 
 ## Define your HTML and CSS together
