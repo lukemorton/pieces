@@ -18,23 +18,6 @@ pieces init hello_world
 
 This will install some boiler plate in `hello_world/`.
 
-## Create styleguide within existing application
-
-Add pieces to your Gemfile:
-
-```ruby
-gem 'pieces'
-```
-
-Then run
-
-```
-bundle
-pieces init styleguide
-```
-
-This will install pieces inside a subfolder called `styleguide/`.
-
 ## Building your site
 
 Please follow examples for a howto right now. Once you've built the pieces
@@ -120,6 +103,23 @@ The child pieces will be rendered in order and passed into the parent
   </body>
 </html>
 ```
+
+## Create styleguide within existing application
+
+Add pieces to your Gemfile:
+
+```ruby
+gem 'pieces'
+```
+
+Then run
+
+```
+bundle
+pieces init styleguide
+```
+
+This will install pieces inside a subfolder called `styleguide/`.
 
 ## More Examples
 
