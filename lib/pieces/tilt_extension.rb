@@ -6,9 +6,9 @@ module Tilt
     register_lazy 'Pieces::Tilt::CssTemplate', 'pieces/tilt/css', 'css'
   else # support tilt v1
     require 'pieces/tilt/mustache'
-    register Tilt::MustacheTemplate, 'mustache', 'ms'
+    register Pieces::Tilt::MustacheTemplate, 'mustache', 'ms'
 
     require 'pieces/tilt/css'
-    register Tilt::CssTemplate, 'css'
+    register Pieces::Tilt::CssTemplate, 'css'
   end
 end
