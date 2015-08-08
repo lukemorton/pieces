@@ -21,7 +21,7 @@ module Pieces
       build_path = "#{path}/build"
 
       Rack::Builder.app do
-        # use Rack::Reloader
+        use Rack::Reloader
 
         use Rack::Static, urls: files,
                           root: build_path,
