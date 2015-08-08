@@ -10,7 +10,7 @@ when 'init'
   puts "Pieces placed in #{init_path}"
 when 'build'
   print 'Building pieces into current directory...'
-  Pieces::Builder.new.build(path: '.')
+  Pieces::Builder.build(path: '.')
   puts 'done.'
 else
   puts 'Run either `pieces init` or `pieces build`'

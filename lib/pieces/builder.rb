@@ -3,6 +3,10 @@ require 'yaml'
 
 module Pieces
   class Builder
+    def self.build(config)
+      new(config).build
+    end
+
     attr_reader :path
     attr_reader :route_config
 
