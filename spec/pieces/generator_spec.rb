@@ -1,6 +1,5 @@
 describe Pieces::Generator do
   context 'when test_app is generated' do
-
     within_tmp_dir
 
     context 'test_app/' do
