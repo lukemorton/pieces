@@ -5,8 +5,8 @@ module Pieces
   class Server < Rack::Server
     attr_reader :path
 
-    def initialize(options)
-      @path = options[:path]
+    def initialize(options = {})
+      @path = options[:path] or Dir.pwd
       super
     end
 
@@ -16,22 +16,22 @@ module Pieces
       super
     end
 
-    private
-
     def app
       files = files_to_serve(path)
       build_path = "#{path}/build"
 
-      Rack::Builder.new do
-        use Rack::Reloader
+      Rack::Builder.app do
+        # use Rack::Reloader
 
         use Rack::Static, urls: files,
                           root: build_path,
                           index: 'index.html'
 
         run Proc.new { |env| [404, {}, ['Not found']] }
-      end.to_app
+      end
     end
+
+    private
 
     def build_pieces
       Pieces::Builder.build(path: path)
