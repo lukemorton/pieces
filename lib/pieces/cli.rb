@@ -17,6 +17,8 @@ module Pieces
       puts 'done.'
     end
 
+    map %w(s) => :server
+
     desc 'server DIR', 'serve application in DIR'
     def server(path = Dir.pwd)
       Pieces::Builder.build(path: path)
@@ -24,7 +26,7 @@ module Pieces
       Pieces::Server.start(path: path)
     end
 
-    map %w[--version -v] => :version
+    map %w(--version -v) => :version
 
     desc '--version', 'get pieces version'
     def version
