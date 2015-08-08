@@ -16,6 +16,8 @@ module Pieces
       super(config.merge(app: app))
     end
 
+    private
+
     def self.files_to_serve(path)
       Dir["#{path}/build/**/*"].map { |file| file.sub("#{path}/build", '') }
     end
