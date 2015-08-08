@@ -4,6 +4,15 @@ describe Pieces::CLI do
   within_tmp_dir
   silence_output
 
+  context 'when checking version of pieces' do
+    %w(version --version -v).each do |command|
+      context "with `pieces #{command}`" do
+        subject { Pieces::CLI.start([command]) }
+        it { expect { subject }.to output("pieces v#{Pieces::VERSION}\n").to_stdout }
+      end
+    end
+  end
+
   context 'when initing new project' do
     context 'test_app/' do
       subject do
