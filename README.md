@@ -177,23 +177,6 @@ The child pieces will be rendered in order and passed into the parent
 </html>
 ```
 
-## Create styleguide within existing application
-
-Add pieces to your Gemfile:
-
-```ruby
-gem 'pieces'
-```
-
-Then run
-
-```
-bundle
-pieces init styleguide
-```
-
-This will install pieces inside a subfolder called `styleguide/`.
-
 ## More Examples
 
  - [Original example][original] using .erb and .mustache (liek wtf!)
