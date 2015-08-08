@@ -63,7 +63,7 @@ gem install pieces
 pieces init hello_world
 ```
 
-This will install `config/routes.yml`, a layout and example header and footer
+This will install `config/pieces.yml`, a layout and example header and footer
 into `hello_world/` for you.
 
 ## Building your site
@@ -79,10 +79,10 @@ Make sure you run this from your pieces directory!
 
 ## How it works
 
-Using configuration found in `config/routes.yml` pieces will compile your
+Using configuration found in `config/pieces.yml` pieces will compile your
 modular components ala BEM (or whatever you prefer) into a static HTML site.
 
-At the top level of your `routes.yml` you define your output files, or "routes".
+At the top level of your `pieces.yml` you define your output files, or "routes".
 The following example will build both `index.html` and `about.html`.
 
 ``` yml
@@ -96,9 +96,9 @@ about:
 ```
 
 Both `index.html` and `about.html` make use of a piece called "intro". This
-piece will be found in either `pieces/intro.html.*`, `pieces/intro/intro.html.*`
-or `pieces/application/intro.html.*`. The `*` can be any format supported by
-[tilt](https://github.com/rtomayko/tilt).
+piece will be found in either `app/views/intro.html.*`,
+`app/views/intro/intro.html.*` or `app/views/application/intro.html.*`. The `*`
+can be any format supported by [tilt](https://github.com/rtomayko/tilt).
 
 You can generate your HTML into directories quite easily:
 
@@ -124,8 +124,9 @@ about:
     - footer: {}
 ```
 
-"copy/intro" and "galleries/photo" will be found in `pieces/copy/intro.html.*`
-and `pieces/galleries/photo.html.*` respectively.
+"copy/intro" and "galleries/photo" will be found in
+`app/views/copy/intro.html.*` and `app/views/galleries/photo.html.*`
+respectively.
 
 You can place your content in a layout quite easily with nested pieces.
 
@@ -142,7 +143,7 @@ about:
 
 The child pieces will be rendered in order and passed into the parent
 "layouts/application" piece as `yield`. If you had
-`pieces/layouts/application.html.erb` then you can call yield like so:
+`app/views/layouts/application.html.erb` then you can call yield like so:
 
 ``` erb
 <html>
