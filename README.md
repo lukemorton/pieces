@@ -17,7 +17,7 @@ your layout is just another component.
 
 Add pieces to your Gemfile:
 
-```
+``` ruby
 gem 'pieces'
 ```
 
@@ -90,10 +90,7 @@ pieces init hello_world
 This will install `config/pieces.yml`, a layout and example header and footer
 into `hello_world/` for you.
 
-## Building your site
-
-Please follow examples for a howto right now. Once you've built the pieces
-and routes for your site all you have to do is run:
+Once you've built the pieces and routes for your site all you have to do is run:
 
 ```
 pieces build
