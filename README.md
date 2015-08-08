@@ -25,7 +25,7 @@ Or install globally:
 
 ```
 gem install pieces
-``
+```
 
 ### Quick example
 
