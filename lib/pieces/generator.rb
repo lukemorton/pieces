@@ -7,10 +7,12 @@ module Pieces
       FileUtils.mkdir_p(path)
 
       Dir["#{example_path}/{config,app}"].each do |dir|
-        FileUtils.cp_r(dir, path)
+        FileUtils.cp_r(dir, path) unless Dir.exist?("#{path}/#{File.basename(dir)}")
       end
 
-      FileUtils.cp("#{example_path}/Gemfile", "#{path}/Gemfile")
+      unless File.exist?("#{path}/Gemfile")
+        FileUtils.cp("#{example_path}/Gemfile", "#{path}/Gemfile")
+      end
     end
 
     private
