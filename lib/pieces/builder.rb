@@ -3,8 +3,14 @@ require 'yaml'
 
 module Pieces
   class Builder
-    def build(config)
-      Dir.chdir(config[:path]) do
+    attr_reader :path
+
+    def initialize(config)
+      @path = config[:path]
+    end
+
+    def build
+      Dir.chdir(path) do
         save_files(build_files)
       end
     end

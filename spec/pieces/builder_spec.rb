@@ -1,5 +1,5 @@
 describe Pieces::Builder do
-  before(:each) { described_class.new.build(path: 'examples/original/') }
+  before(:each) { described_class.new(path: 'examples/original/').build }
   after(:each) { FileUtils.rm_rf('examples/original/build') }
 
   context 'when example site is built' do
