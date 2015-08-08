@@ -4,6 +4,7 @@ require 'pieces/builder'
 require 'pieces/generator'
 require 'pieces/server'
 require 'pieces/tilt_extension'
+require 'pieces/rails'
 require 'pieces/version'
 
 module Pieces
