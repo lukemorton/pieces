@@ -8,7 +8,7 @@ This gem will take your HTML and CSS components and compile them into a static
 site. This can be useful for simple sites, including blogs, as well as building
 styleguides for your rails applications.
 
-## Define your HTML and CSS in the same folder
+## Define your HTML and CSS together
 
 With pieces, you define the view of your application with components. Even
 your layout is just another component.
@@ -37,6 +37,9 @@ your layout is just another component.
 
 **`config/pieces.yml`:**
 
+We pull the pieces together with a configuration file. Here you can define
+nested pieces and data to be used to generate a static site.
+
 ``` yml
 index:
   _pieces:
@@ -46,6 +49,10 @@ index:
           - article: { title: 'A title', content: '<p>Content.</p>' }
           - article: { title: 'Another title', content: '<p>More content.</p>' }
 ```
+
+With these three files in place and having installed pieces on your system
+(`gem install pieces`) you can run `pieces build`. The HTML and CSS will be
+built into `build/`.
 
 ## Create new static site
 
