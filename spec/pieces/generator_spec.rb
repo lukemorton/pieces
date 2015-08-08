@@ -1,5 +1,6 @@
 describe Pieces::Generator do
   context 'when test_app is generated' do
+
     within_tmp_dir
 
     context 'test_app/' do
@@ -17,6 +18,7 @@ describe Pieces::Generator do
     context 'unspecified directory' do
       subject do
         Dir.mkdir('test_app')
+
         Dir.chdir('test_app') do
           described_class.init
           Dir['**/*']
