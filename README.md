@@ -76,10 +76,11 @@ With these three files in place and having installed pieces on your system
 (`gem install pieces`) you can run:
 
 ```
-pieces build
+pieces server
 ```
 
-This will build HTML and CSS into `build/`.
+Now visit http://localhost:8080 to see your site! If you change your
+`config/routes.yml` or views they will be reflected on the site.
 
 ## Create new static site
 
@@ -99,7 +100,19 @@ Once you've built the pieces and routes for your site all you have to do is run:
 pieces build
 ```
 
-Make sure you run this from your pieces directory!
+Your site will be built into `build/` directory. You can then use these HTML
+files for your site.
+
+Whilst developing you won't want to keep running `pieces build`. Pieces comes
+with a server inbuilt that reloads everytime you make a change.
+
+To run it:
+
+```
+pieces server
+```
+
+Now visit http://localhost:8080 in your browser.
 
 ## Configuration
 
