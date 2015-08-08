@@ -3,39 +3,49 @@ require 'listen'
 
 module Pieces
   class Server < Rack::Server
-    def self.start(config = {})
-      Pieces::Builder.build(path: config[:path])
+    attr_reader :path
 
-      server = new(config.merge(app: app(config[:path])))
+    def initialize(options)
+      @path = options[:path]
+      super
+    end
 
-      listener = Listen.to("#{config[:path]}/config/",
-                           "#{config[:path]}/app/views/") do
-        print "Rebuilding #{config[:path]}... "
-        Pieces::Builder.build(path: config[:path])
-        puts 'done.'
-      end
-
+    def start
+      build_pieces
       listener.start
-      server.start
+      super
     end
 
     private
 
-    def self.app(path)
+    def app
       files = files_to_serve(path)
+      build_path = "#{path}/build"
 
       Rack::Builder.new do
-        use Rack::Static, urls: files,
-                          root: "#{path}/build",
-                          index: 'index.html'
-
         use Rack::Reloader
+
+        use Rack::Static, urls: files,
+                          root: build_path,
+                          index: 'index.html'
 
         run Proc.new { |env| [404, {}, ['Not found']] }
       end.to_app
     end
 
-    def self.files_to_serve(path)
+    def build_pieces
+      Pieces::Builder.build(path: path)
+    end
+
+    def listener
+      Listen.to("#{path}/config/", "#{path}/app/views/") do
+        print "Rebuilding #{path}... "
+        build_pieces
+        puts 'done.'
+      end
+    end
+
+    def files_to_serve(path)
       Dir["#{path}/build/**/*"].map { |file| file.sub("#{path}/build", '') }
     end
   end
