@@ -11,7 +11,7 @@ describe Pieces::Generator do
         end
       end
 
-      include_examples 'it is expected to contain built files'
+      include_examples 'it is expected to contain boilerplate files'
     end
 
     context 'unspecified directory' do
@@ -24,7 +24,7 @@ describe Pieces::Generator do
         end
       end
 
-      include_examples 'it is expected to contain built files'
+      include_examples 'it is expected to contain boilerplate files'
     end
   end
 end

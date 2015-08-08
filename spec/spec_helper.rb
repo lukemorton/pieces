@@ -6,6 +6,8 @@ CodeClimate::TestReporter.start
 require 'pieces'
 
 shared_examples_for 'it is expected to contain built files' do
+
+shared_examples_for 'it is expected to contain boilerplate files' do
   it { is_expected.to include('config/routes.yml') }
   it { is_expected.to include('pieces/layouts/application.html.erb') }
   it { is_expected.to include('pieces/application/header.html.erb') }
