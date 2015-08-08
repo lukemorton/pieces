@@ -16,19 +16,19 @@ module Pieces
     end
 
     def build
-      Dir.chdir(path) do
-        save_files(build_files)
-      end
+      save_files(build_files)
     end
 
     private
 
     def build_files
       files = {}
-      StyleCompiler.new.compile(files)
+      StyleCompiler.new(path: path).compile(files)
 
-      routes.reduce(files) do |files, (name, route)|
-        RouteCompiler.compile(files, name, route, globals)
+      Dir.chdir(path) do
+        routes.reduce(files) do |files, (name, route)|
+          RouteCompiler.compile(files, name, route, globals)
+        end
       end
     end
 
@@ -41,11 +41,13 @@ module Pieces
     end
 
     def save_files(files)
-      FileUtils.rm_rf('build')
-      Dir.mkdir('build')
+      Dir.chdir(path) do
+        FileUtils.rm_rf('build')
+        Dir.mkdir('build')
 
-      files.each do |name, file|
-        save_file(name, file)
+        files.each do |name, file|
+          save_file(name, file)
+        end
       end
     end
 
