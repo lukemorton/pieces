@@ -6,7 +6,7 @@ module Pieces
       path = config[:path] || Dir.pwd
       FileUtils.mkdir_p(path)
 
-      Dir["#{example_path}/{config,layouts,pieces}"].each do |dir|
+      Dir["#{example_path}/{config,app}"].each do |dir|
         FileUtils.cp_r(dir, path)
       end
 

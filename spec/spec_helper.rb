@@ -8,10 +8,10 @@ require 'pieces'
 ROOT_DIR = File.dirname(__FILE__) + '/../'
 
 shared_examples_for 'it is expected to contain boilerplate files' do
-  it { is_expected.to include('config/routes.yml') }
-  it { is_expected.to include('pieces/layouts/application.html.erb') }
-  it { is_expected.to include('pieces/application/header.html.erb') }
-  it { is_expected.to include('pieces/application/footer.html.erb') }
+  it { is_expected.to include('config/pieces.yml') }
+  it { is_expected.to include('app/views/layouts/application.html.erb') }
+  it { is_expected.to include('app/views/application/header.html.erb') }
+  it { is_expected.to include('app/views/application/footer.html.erb') }
 end
 
 module TmpDir

@@ -1,5 +1,5 @@
 describe Tilt::MustacheTemplate do
-  let(:template) { described_class.new('examples/original/pieces/posts/post.html.mustache') }
+  let(:template) { described_class.new('examples/original/app/views/posts/post.html.mustache') }
 
   context 'when rendering with no data' do
     subject { template.render }

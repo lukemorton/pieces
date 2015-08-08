@@ -12,7 +12,7 @@ module Pieces
 
     def initialize(config)
       @path = config[:path]
-      @route_config ||= YAML.load_file("#{path}/config/routes.yml")
+      @route_config ||= YAML.load_file("#{path}/config/pieces.yml")
     end
 
     def build

@@ -15,7 +15,7 @@ module Pieces
     private
 
     def piece_path(piece)
-      Dir["#{path}/pieces/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
+      Dir["#{path}/app/views/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
     end
 
     def route_globals(route)
