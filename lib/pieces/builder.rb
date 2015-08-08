@@ -4,9 +4,11 @@ require 'yaml'
 module Pieces
   class Builder
     attr_reader :path
+    attr_reader :route_config
 
     def initialize(config)
       @path = config[:path]
+      @route_config ||= YAML.load_file("#{path}/config/routes.yml")
     end
 
     def build
@@ -18,11 +20,12 @@ module Pieces
     private
 
     def build_files
-      routes.reduce({}) { |files, (name, route)| build_route(files, name, route) }
-    end
+      files = {}
+      StyleCompiler.new.compile(files)
 
-    def route_config
-      @route_config ||= YAML.load_file('config/routes.yml')
+      routes.reduce(files) do |files, (name, route)|
+        RouteCompiler.compile(files, name, route, globals)
+      end
     end
 
     def globals
@@ -31,11 +34,6 @@ module Pieces
 
     def routes
       route_config.reject { |key, _| key =~ /^_/ }
-    end
-
-    def build_route(files, name, route)
-      StyleCompiler.new.compile(files)
-      RouteCompiler.compile(files, name, route, globals)
     end
 
     def save_files(files)
