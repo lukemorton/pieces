@@ -13,7 +13,7 @@ styleguides for your rails applications.
 With pieces, you define the view of your application with components. Even
 your layout is just another component.
 
-**`pieces/article/article.html.erb`**
+**`pieces/article/article.html.erb`:**
 
 ``` erb
 <article class="article">
@@ -22,7 +22,7 @@ your layout is just another component.
 </article>
 ```
 
-**`pieces/layouts/application.html.erb`**
+**`pieces/layouts/application.html.erb`:**
 
 ``` erb
 <html>
@@ -35,7 +35,7 @@ your layout is just another component.
 </html>
 ```
 
-To stitch your components into a static site, you define a `config/routes.yml`:
+**`config/routes.yml`:**
 
 ``` yml
 index:
