@@ -1,4 +1,7 @@
-describe Tilt::MustacheTemplate do
+require 'tilt'
+require 'pieces/tilt/mustache'
+
+describe Pieces::Tilt::MustacheTemplate do
   let(:template) { described_class.new('examples/original/app/views/posts/post.html.mustache') }
 
   context 'when rendering with no data' do

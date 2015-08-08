@@ -9,7 +9,7 @@ module Pieces
     def compile(files)
       files.merge('compiled.css' => { contents: '', type: 'css' }).tap do |files|
         Dir["#{path}/app/views/*/*.{css,scss,sass,less}"].each do |file|
-          files['compiled.css'][:contents] << Tilt.new(file).render
+          files['compiled.css'][:contents] << ::Tilt.new(file).render
         end
       end
     end

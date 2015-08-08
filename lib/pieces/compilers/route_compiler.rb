@@ -34,7 +34,7 @@ module Pieces
 
     def compile_piece(piece, data)
       view_model = OpenStruct.new(data['_global'].merge(data))
-      Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
+      ::Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 
     def yield_pieces(data)

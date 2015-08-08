@@ -1,6 +1,6 @@
 module Pieces
   module Tilt
-    class MustacheTemplate < Template
+    class MustacheTemplate < ::Tilt::Template
       def initialize_engine; end
 
       def prepare; end
