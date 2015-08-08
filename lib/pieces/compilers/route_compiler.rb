@@ -9,17 +9,13 @@ module Pieces
     end
 
     def compile(files, name, route)
-      route['_pieces'].reduce(files) do |files, piece|
-        piece, data = piece.keys.first, piece.values.first
-        data['_global'] = globals.merge(route.delete('_global') || {}).merge(data['_global'] || {})
+      files["#{name}.html"] = { contents: '', type: 'html' }
 
-        files["#{name}.html"] = { contents: '', type: 'html' } unless files.has_key?("#{name}.html")
-        view_model = OpenStruct.new(data['_global'].merge(data))
-        content = Tilt.new(piece_path(piece)).render(view_model) { yield_route_pieces(data) }
-        files["#{name}.html"][:contents] << content
-
-        files
+      pieces(route).each do |piece, data|
+        files["#{name}.html"][:contents] << compile_piece(piece, data)
       end
+
+      files
     end
 
     private
@@ -28,14 +24,31 @@ module Pieces
       Dir["#{path}/pieces/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
     end
 
+    def route_globals(route)
+      globals.merge(route['_global'] || {})
+    end
+
+    def merge_globals(data, route)
+      data['_global'] = route_globals(route).merge(data['_global'] || {})
+      data
+    end
+
+    def pieces(data)
+      data['_pieces'].map do |piece|
+        [piece.keys.first, merge_globals(piece.values.first, data)]
+      end
+    end
+
+    def compile_piece(piece, data)
+      view_model = OpenStruct.new(data['_global'].merge(data))
+      Tilt.new(piece_path(piece)).render(view_model) { yield_route_pieces(data) }
+    end
+
     def yield_route_pieces(parent_data)
       return '' unless parent_data.has_key?('_pieces')
 
-      parent_data['_pieces'].reduce('') do |content, piece|
-        piece, data = piece.keys.first, piece.values.first
-        data['_global'] = (parent_data['_global'] || {}).merge(data['_global'] || {})
-        view_model = OpenStruct.new(data['_global'].merge(data))
-        content << Tilt.new(piece_path(piece)).render(view_model) { yield_route_pieces(data) }
+      pieces(parent_data).reduce('') do |contents, (piece, data)|
+        contents << compile_piece(piece, data)
       end
     end
   end
