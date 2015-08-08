@@ -9,13 +9,7 @@ module Pieces
     end
 
     def compile(files, name, route)
-      files["#{name}.html"] = { contents: '', type: 'html' }
-
-      pieces(route).each do |piece, data|
-        files["#{name}.html"][:contents] << compile_piece(piece, data)
-      end
-
-      files
+      files.merge("#{name}.html" => { contents: yield_pieces(route), type: 'html' })
     end
 
     private
@@ -29,8 +23,7 @@ module Pieces
     end
 
     def merge_globals(data, route)
-      data['_global'] = route_globals(route).merge(data['_global'] || {})
-      data
+      data.merge('_global' => route_globals(route).merge(data['_global'] || {}))
     end
 
     def pieces(data)
@@ -41,13 +34,13 @@ module Pieces
 
     def compile_piece(piece, data)
       view_model = OpenStruct.new(data['_global'].merge(data))
-      Tilt.new(piece_path(piece)).render(view_model) { yield_route_pieces(data) }
+      Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 
-    def yield_route_pieces(parent_data)
-      return '' unless parent_data.has_key?('_pieces')
+    def yield_pieces(data)
+      return '' unless data.has_key?('_pieces')
 
-      pieces(parent_data).reduce('') do |contents, (piece, data)|
+      pieces(data).reduce('') do |contents, (piece, data)|
         contents << compile_piece(piece, data)
       end
     end
