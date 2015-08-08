@@ -8,7 +8,8 @@ module Pieces
 
       server = new(config.merge(app: app(config[:path])))
 
-      listener = Listen.to("#{config[:path]}/config") do
+      listener = Listen.to("#{config[:path]}/config/",
+                           "#{config[:path]}/app/views/") do
         print "Rebuilding #{config[:path]}... "
         Pieces::Builder.build(path: config[:path])
         puts 'done.'
