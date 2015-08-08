@@ -27,7 +27,7 @@ module Pieces
     end
 
     def pieces(data)
-      data['_pieces'].map do |piece|
+      (data['_pieces'] || []).map do |piece|
         [piece.keys.first, merge_globals(piece.values.first, data)]
       end
     end
@@ -38,8 +38,6 @@ module Pieces
     end
 
     def yield_pieces(data)
-      return '' unless data.has_key?('_pieces')
-
       pieces(data).reduce('') do |contents, (piece, data)|
         contents << compile_piece(piece, data)
       end
