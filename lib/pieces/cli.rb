@@ -16,5 +16,12 @@ module Pieces
       Pieces::Builder.build(path: path)
       puts 'done.'
     end
+
+    map %w[--version -v] => :version
+
+    desc '--version', 'get pieces version'
+    def version
+      puts "pieces v#{Pieces::VERSION}"
+    end
   end
 end
