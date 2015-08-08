@@ -5,7 +5,7 @@ CodeClimate::TestReporter.start
 
 require 'pieces'
 
-shared_examples_for 'it is expected to contain built files' do
+ROOT_DIR = File.dirname(__FILE__) + '/../'
 
 shared_examples_for 'it is expected to contain boilerplate files' do
   it { is_expected.to include('config/routes.yml') }
@@ -24,6 +24,15 @@ module TmpDir
   end
 end
 
+module SilenceOutput
+  def silence_output
+    before(:each) do
+      allow($stdout).to receive(:write)
+    end
+  end
+end
+
 RSpec.configure do |config|
   config.extend(TmpDir)
+  config.extend(SilenceOutput)
 end
