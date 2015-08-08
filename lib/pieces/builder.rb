@@ -25,15 +25,9 @@ module Pieces
       files = {}
       StyleCompiler.new(path: path).compile(files)
 
-      Dir.chdir(path) do
-        routes.reduce(files) do |files, (name, route)|
-          RouteCompiler.compile(files, name, route, globals)
-        end
+      routes.reduce(files) do |files, (name, route)|
+        RouteCompiler.new(path: path, globals: route_config['_global']).compile(files, name, route)
       end
-    end
-
-    def globals
-      route_config['_global'] or {}
     end
 
     def routes

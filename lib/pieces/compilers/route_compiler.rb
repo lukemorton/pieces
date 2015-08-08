@@ -1,8 +1,14 @@
 module Pieces
-  module RouteCompiler
-    extend self
+  class RouteCompiler
+    attr_reader :path
+    attr_reader :globals
 
-    def compile(files, name, route, globals)
+    def initialize(config)
+      @path = config[:path] || Dir.pwd
+      @globals = config[:globals] || {}
+    end
+
+    def compile(files, name, route)
       route['_pieces'].reduce(files) do |files, piece|
         piece, data = piece.keys.first, piece.values.first
         data['_global'] = globals.merge(route.delete('_global') || {}).merge(data['_global'] || {})
@@ -19,7 +25,7 @@ module Pieces
     private
 
     def piece_path(piece)
-      Dir["pieces/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
+      Dir["#{path}/pieces/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
     end
 
     def yield_route_pieces(parent_data)
