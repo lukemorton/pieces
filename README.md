@@ -13,6 +13,25 @@ styleguides for your rails applications.
 With pieces, you define the view of your application with components. Even
 your layout is just another component.
 
+### Installation
+
+Add pieces to your Gemfile:
+
+```
+gem 'pieces'
+```
+
+Or install globally:
+
+```
+gem install pieces
+``
+
+### Quick example
+
+Let's start by defining some "pieces", or views as they are better known in
+the rails world.
+
 **`app/views/article/article.html.erb`:**
 
 ``` erb
@@ -35,10 +54,10 @@ your layout is just another component.
 </html>
 ```
 
-**`config/pieces.yml`:**
-
 We pull the pieces together with a configuration file. Here you can define
 nested pieces and data to be used to generate a static site.
+
+**`config/pieces.yml`:**
 
 ``` yml
 index:
@@ -51,8 +70,13 @@ index:
 ```
 
 With these three files in place and having installed pieces on your system
-(`gem install pieces`) you can run `pieces build`. The HTML and CSS will be
-built into `build/`.
+(`gem install pieces`) you can run:
+
+```
+pieces build
+```
+
+This will build HTML and CSS into `build/`.
 
 ## Create new static site
 
@@ -77,7 +101,7 @@ pieces build
 
 Make sure you run this from your pieces directory!
 
-## How it works
+## Configuration
 
 Using configuration found in `config/pieces.yml` pieces will compile your
 modular components ala BEM (or whatever you prefer) into a static HTML site.
