@@ -16,6 +16,7 @@ module Pieces
     end
 
     def build
+      require 'pieces/tilt_extension'
       save_files(build_files)
     end
 
