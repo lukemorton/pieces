@@ -1,6 +1,7 @@
 module Pieces
   module Generator
     extend self
+
     def init(config)
       FileUtils.mkdir_p(config[:path])
 
