@@ -83,6 +83,39 @@ pieces server
 Now visit [http://localhost:8080](http://localhost:8080) to see your site! If
 you change your `config/routes.yml` or views they will be reflected on the site.
 
+## Use as styleguide for rails
+
+Firstly, ensure you have added pieces to your `Gemfile`:
+
+``` ruby
+gem 'pieces'
+```
+
+Next you need to initialize your application to use pieces:
+
+```
+bundle
+bundle exec pieces init
+```
+
+Now mount pieces in your `config/routes.rb`:
+
+``` ruby
+Rails.application.routes.draw do
+  mount Pieces::Rails.new.mount, at: '/styleguide'
+end
+```
+
+Edit your `config/pieces.yml` to demo some of your components.
+
+Now boot up rails:
+
+```
+bundle exec rails s
+```
+
+And then visit [http://localhost:3000/styleguide](http://localhost:3000/styleguide)
+
 ## Create new static site
 
 To create a new static site with pieces:
@@ -195,9 +228,11 @@ The child pieces will be rendered in order and passed into the parent
 
  - [Original example][original] using .erb and .mustache (liek wtf!)
  - [Boilerplate example][boilerplate] used by `pieces init`
+ - [Rails example][rails] using pieces as a styleguide
 
 [original]: https://github.com/drpheltright/pieces/tree/master/examples/original
 [boilerplate]: https://github.com/drpheltright/pieces/tree/master/examples/boilerplate
+[rails]: https://github.com/drpheltright/pieces/tree/master/examples/rails
 
 ## Contributing
 
