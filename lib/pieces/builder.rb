@@ -24,9 +24,10 @@ module Pieces
     def build_files
       files = {}
       StyleCompiler.new(path: path).compile(files)
+      route_compiler = RouteCompiler.new(path: path, globals: route_config['_global'])
 
       routes.reduce(files) do |files, (name, route)|
-        RouteCompiler.new(path: path, globals: route_config['_global']).compile(files, name, route)
+        route_compiler.compile(files, name, route)
       end
     end
 
