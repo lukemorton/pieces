@@ -18,13 +18,13 @@ your layout is just another component.
 
 ### Installation
 
-Add pieces to your Gemfile:
+If installing pieces into a rails app, add it to your Gemfile:
 
 ``` ruby
 gem 'pieces'
 ```
 
-Or install globally:
+If building a standalone site, install globally:
 
 ```
 gem install pieces
