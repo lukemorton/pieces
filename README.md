@@ -5,11 +5,11 @@
 [![Test Coverage](https://codeclimate.com/github/drpheltright/pieces/badges/coverage.svg)](https://codeclimate.com/github/drpheltright/pieces/coverage)
 
 This gem will take your HTML and CSS components and compile them into a static
-site. This can be useful for:
+site.
 
- - simple static sites, including blogs
- - building styleguides for your rails applications
- - mocking up designs
+ - Build simple static sites, including blogs
+ - Produce styleguides for your rails applications
+ - Mock up designs
 
 ## Define your HTML and CSS together
 
