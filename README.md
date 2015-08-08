@@ -79,8 +79,8 @@ With these three files in place and having installed pieces on your system
 pieces server
 ```
 
-Now visit http://localhost:8080 to see your site! If you change your
-`config/routes.yml` or views they will be reflected on the site.
+Now visit [http://localhost:8080][http://localhost:8080] to see your site! If
+you change your `config/routes.yml` or views they will be reflected on the site.
 
 ## Create new static site
 
@@ -112,7 +112,7 @@ To run it:
 pieces server
 ```
 
-Now visit http://localhost:8080 in your browser.
+Now visit [http://localhost:8080][http://localhost:8080] in your browser.
 
 ## Configuration
 
