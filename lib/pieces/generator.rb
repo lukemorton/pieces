@@ -8,6 +8,7 @@ module Pieces
 
       if Dir.exist?("#{path}/app/views")
         FileUtils.mkdir_p("#{path}/app/views/application")
+        FileUtils.mkdir_p("#{path}/app/views/layouts")
 
         unless File.exist?("#{path}/app/views/layouts/pieces.html.erb")
           FileUtils.cp("#{example_path}/app/views/layouts/pieces.html.erb", "#{path}/app/views/layouts")
@@ -21,7 +22,8 @@ module Pieces
           FileUtils.cp("#{example_path}/app/views/application/footer.html.erb", "#{path}/app/views/application")
         end
       else
-        FileUtils.cp_r("#{example_path}/app/views", path)
+        FileUtils.mkdir_p("#{path}/app/")
+        FileUtils.cp_r("#{example_path}/app/views", "#{path}/app/views")
       end
 
       unless File.exist?("#{path}/config/pieces.yml")
