@@ -2,9 +2,18 @@ describe Pieces::Builder do
   before(:each) { described_class.new.build(path: 'examples/original/') }
   after(:each) { FileUtils.rm_rf('examples/original/build') }
 
-  context 'when building example site' do
-    subject { Dir['examples/original/build/*'] }
-    it { is_expected.to_not be_empty }
+  context 'when example site is built' do
+    context 'build/' do
+      subject do
+        Dir.chdir('examples/original/build/') do
+          Dir['*']
+        end
+      end
+
+      it { is_expected.to include('index.html') }
+      it { is_expected.to include('about.html') }
+      it { is_expected.to include('compiled.css') }
+    end
   end
 
   context 'when compiling index.html from Mustache templates' do
