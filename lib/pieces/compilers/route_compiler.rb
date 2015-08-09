@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Pieces
   class RouteCompiler
     attr_reader :path
@@ -33,13 +35,25 @@ module Pieces
     end
 
     def compile_piece(piece, data)
-      view_model = OpenStruct.new(data['_global'].merge(data))
+      view_model = ViewModel.new(data['_global'].merge(data))
       ::Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 
     def yield_pieces(data)
       pieces(data).reduce('') do |contents, (piece, data)|
         contents << compile_piece(piece, data)
+      end
+    end
+
+    class ViewModel < OpenStruct
+      if defined?(ActionView)
+        include ActionView::Context
+        include ActionView::Helpers
+      end
+
+      def initialize(*)
+        super
+        _prepare_context if defined?(ActionView)
       end
     end
   end
