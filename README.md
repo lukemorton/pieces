@@ -8,11 +8,9 @@
 This gem will take your HTML and CSS components and compile them into a static
 site.
 
- - Build static sites and blogs
- - Produce styleguides for your rails applications – [read how to](#use-as-styleguide-for-rails)
- - Mock up designs
-
-## Define your HTML and CSS together
+ - <h4>Build static sites and blogs</h4>
+ - <h4>Produce styleguides for your rails applications</h4>
+ - <h4>Mock up designs</h4>
 
 With pieces, you define the view of your application with components. Even
 your layout is just another component.
@@ -44,6 +42,23 @@ the rails world.
   <div class="article__content"><%= content %></div>
 </article>
 ```
+
+You should have a one to one relationship between components, and stylesheets.
+For example, `.article` should be defined like so.
+
+**`app/assets/stylesheets/components/article.css`:**
+
+```css
+.article {
+  padding: 1em;
+}
+
+.article__content {
+  padding-top: 1em;
+}
+```
+
+You can use `.css`, `.scss`, `.sass` and `.less` with pieces.
 
 **`app/views/layouts/application.html.erb`:**
 
