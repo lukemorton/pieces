@@ -8,7 +8,7 @@ module Pieces
     end
 
     def listen
-      Listen.to("#{path}/config/", "#{path}/app/views/") do
+      Listen.to("#{path}/config/", "#{path}/app/") do
         print "Rebuilding #{path}... "
         build_pieces
         puts 'done.'
