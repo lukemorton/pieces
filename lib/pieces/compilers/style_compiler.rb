@@ -8,13 +8,16 @@ module Pieces
 
     def compile(files)
       files.merge('compiled.css' => { contents: '', type: 'css' }).tap do |files|
-        Dir["#{path}/app/assets/stylesheets/components/**/*.{css,scss,sass,less}"].each do |file|
-          files['compiled.css'][:contents] << ::Tilt.new(file).render
-        end
+        files['compiled.css'][:contents] << yield_stylesheets('app/assets/stylesheets/components')
+        files['compiled.css'][:contents] << yield_stylesheets('app/views')
+      end
+    end
 
-        Dir["#{path}/app/views/**/*.{css,scss,sass,less}"].each do |file|
-          files['compiled.css'][:contents] << ::Tilt.new(file).render
-        end
+    private
+
+    def yield_stylesheets(dir)
+      Dir["#{path}/#{dir}/**/*.{css,scss,sass,less}"].reduce('') do |contents, stylesheet|
+        contents << ::Tilt.new(stylesheet).render
       end
     end
   end
