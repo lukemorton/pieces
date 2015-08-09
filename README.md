@@ -8,9 +8,9 @@
 This gem will take your HTML and CSS components and compile them into a static
 site.
 
- - <h4>Build static sites and blogs</h4>
- - <h4>Produce styleguides for your rails applications</h4>
- - <h4>Mock up designs</h4>
+ - <h5>Build static sites and blogs</h5>
+ - <h5>Produce styleguides for your rails applications</h5>
+ - <h5>Mock up designs</h5>
 
 With pieces, you define the view of your application with components. Even
 your layout is just another component.
