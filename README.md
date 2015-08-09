@@ -131,6 +131,14 @@ bundle exec rails s
 
 And then visit [http://localhost:3000/styleguide](http://localhost:3000/styleguide)
 
+Alternatively you can run your styleguide without rails:
+
+```
+bundle exec pieces s
+```
+
+And then visit [http://localhost:8080](http://localhost:8080)
+
 ## Create new static site
 
 To create a new static site with pieces:
