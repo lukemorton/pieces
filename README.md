@@ -5,19 +5,19 @@
 [![Code Climate](https://codeclimate.com/github/drpheltright/pieces/badges/gpa.svg)](https://codeclimate.com/github/drpheltright/pieces)
 [![Test Coverage](https://codeclimate.com/github/drpheltright/pieces/badges/coverage.svg)](https://codeclimate.com/github/drpheltright/pieces/coverage)
 
-This gem will take your HTML and CSS components and compile them into a static
-site.
+Pieces is a gem that will take your HTML and CSS components and compile them
+into a static site or styleguide.
 
  - <h5>Build static sites and blogs</h5>
  - <h5>Produce styleguides for your rails applications</h5>
  - <h5>Mock up designs</h5>
 
-With pieces, you define the view of your application with components. Even
+With Pieces, you define the view of your application with components. Even
 your layout is just another component.
 
 ### Installation
 
-If installing pieces into a rails app, add it to your Gemfile:
+If installing Pieces into a rails app, add it to your Gemfile:
 
 ``` ruby
 gem 'pieces'
@@ -31,8 +31,9 @@ gem install pieces
 
 ### Quick example
 
-Let's start by defining some "pieces", or views as they are better known in
-the rails world.
+Let's start by defining some "pieces", or components, or views as they are
+better known in the rails world. You'll notice Pieces looks for files in the
+same places rails does.
 
 **`app/views/article/article.html.erb`:**
 
@@ -58,7 +59,7 @@ For example, `.article` should be defined like so.
 }
 ```
 
-You can use `.css`, `.scss`, `.sass` and `.less` with pieces.
+You can use `.css`, `.scss`, `.sass` and `.less` with Pieces.
 
 **`app/views/layouts/application.html.erb`:**
 
@@ -74,7 +75,7 @@ You can use `.css`, `.scss`, `.sass` and `.less` with pieces.
 ```
 
 We pull the pieces together with a configuration file. Here you can define
-nested pieces and data to be used to generate a static site.
+nested components and data to be used to generate a static site.
 
 **`config/pieces.yml`:**
 
@@ -100,20 +101,20 @@ you change your `config/routes.yml` or views they will be reflected on the site.
 
 ## Use as styleguide for rails
 
-Firstly, ensure you have added pieces to your `Gemfile`:
+Firstly, ensure you have added Pieces to your `Gemfile`:
 
 ``` ruby
 gem 'pieces'
 ```
 
-Next you need to initialize your application to use pieces:
+Next you need to initialize your application to use Pieces:
 
 ```
 bundle
 bundle exec pieces init
 ```
 
-Now mount pieces in your `config/routes.rb`:
+Now mount Pieces in your `config/routes.rb`:
 
 ``` ruby
 Rails.application.routes.draw do
@@ -141,7 +142,7 @@ And then visit [http://localhost:8080](http://localhost:8080)
 
 ## Create new static site
 
-To create a new static site with pieces:
+To create a new static site with Pieces:
 
 ```
 gem install pieces
@@ -151,7 +152,8 @@ pieces init hello_world
 This will install `config/pieces.yml`, a layout and example header and footer
 into `hello_world/` for you.
 
-Once you've built the pieces and routes for your site all you have to do is run:
+Once you've built the components and routes for your site all you have to do is
+run:
 
 ```
 pieces build
@@ -173,7 +175,7 @@ Now visit [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Configuration
 
-Using configuration found in `config/pieces.yml` pieces will compile your
+Using configuration found in `config/pieces.yml` Pieces' will compile your
 modular components ala BEM (or whatever you prefer) into a static HTML site.
 
 At the top level of your `pieces.yml` you define your output files, or "routes".
@@ -207,7 +209,7 @@ portfolio/another-client:
     - case_study: {}
 ```
 
-Likewise you can structure your pieces in directories:
+Likewise you can structure your components in directories:
 
 ``` yml
 about:
@@ -251,7 +253,7 @@ The child pieces will be rendered in order and passed into the parent
 
  - [Original example][original] using .erb and .mustache (liek wtf!)
  - [Boilerplate example][boilerplate] used by `pieces init`
- - [Rails example][rails] using pieces as a styleguide
+ - [Rails example][rails] using Pieces as a styleguide
 
 [original]: https://github.com/drpheltright/pieces/tree/master/examples/original
 [boilerplate]: https://github.com/drpheltright/pieces/tree/master/examples/boilerplate
