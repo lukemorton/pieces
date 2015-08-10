@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="compiled.css" />
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title><%= title %></title>
+    <%= stylesheet_link_tag '/assets/pieces' %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>

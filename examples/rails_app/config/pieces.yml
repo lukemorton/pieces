@@ -6,4 +6,4 @@ index:
   _pieces:
     - layouts/pieces:
         _pieces:
-          - header: {}
+          - _header: {}
