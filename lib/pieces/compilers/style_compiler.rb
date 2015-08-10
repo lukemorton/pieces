@@ -17,7 +17,15 @@ module Pieces
 
     def yield_stylesheets(dir)
       Dir["#{path}/#{dir}/**/*.{css,scss,sass,less}"].reduce('') do |contents, stylesheet|
-        contents << ::Tilt.new(stylesheet, load_paths: ["#{path}/app/assets/stylesheets/"]).render
+        contents << ::Tilt.new(stylesheet, sass_config).render
+      end
+    end
+
+    def sass_config
+      if defined? Compass
+        Compass.sass_engine_options
+      else
+        { load_paths: "#{path}/app/assets/stylesheets/" }
       end
     end
   end
