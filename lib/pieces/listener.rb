@@ -1,9 +1,11 @@
 module Pieces
   class Listener
     attr_reader :path
+    attr_reader :build_method
 
     def initialize(config = {})
       @path = config[:path] || Dir.pwd
+      @build_method = config[:build_method] || :build
       build_pieces
     end
 
@@ -18,7 +20,7 @@ module Pieces
     private
 
     def build_pieces
-      Pieces::Builder.build(path: path)
+      Pieces::Builder.new(path: path).send(build_method)
     end
   end
 end
