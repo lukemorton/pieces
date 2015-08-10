@@ -17,7 +17,7 @@ module Pieces
 
     def yield_stylesheets(dir)
       Dir["#{path}/#{dir}/**/*.{css,scss,sass,less}"].reduce('') do |contents, stylesheet|
-        contents << ::Tilt.new(stylesheet).render
+        contents << ::Tilt.new(stylesheet, load_paths: ["#{path}/app/assets/stylesheets/"]).render
       end
     end
   end
