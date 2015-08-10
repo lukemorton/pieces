@@ -131,8 +131,9 @@ bundle exec rails s
 
 And then visit [http://localhost:3000/styleguide](http://localhost:3000/styleguide)
 
-**Do you use vagrant?** If you do you should update Pieces::Rails in your
-`config/routes.rb` as follows:
+### Do you use vagrant?
+
+If you do you should update Pieces::Rails in your `config/routes.rb` as follows:
 
 ``` ruby
 mount Pieces::Rails.new(force_polling: true).mount, at: '/styleguide' unless Rails.env.production?
