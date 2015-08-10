@@ -61,7 +61,7 @@ For example, `.article` should be defined like so.
 
 You can use `.css`, `.scss`, `.sass` and `.less` with Pieces.
 
-**`app/views/layouts/application.html.erb`:**
+**`app/views/layouts/pieces.html.erb`:**
 
 ``` erb
 <html>
@@ -82,7 +82,7 @@ nested components and data to be used to generate a static site.
 ``` yml
 index:
   _pieces:
-    - layouts/application:
+    - layouts/pieces:
         title: 'My Articles'
         _pieces:
           - article: { title: 'A title', content: '<p>Content.</p>' }
@@ -97,7 +97,7 @@ pieces server
 ```
 
 Now visit [http://localhost:8080](http://localhost:8080) to see your site! If
-you change your `config/routes.yml` or views they will be reflected on the site.
+you change your `config/pieces.yml` or views they will be reflected on the site.
 
 ## Use as styleguide for rails
 
@@ -229,7 +229,7 @@ You can place your content in a layout quite easily with nested pieces.
 ``` yml
 about:
   _pieces:
-    - layouts/application:
+    - layouts/pieces:
         _pieces:
           - header: {}
           - copy/intro: {}
