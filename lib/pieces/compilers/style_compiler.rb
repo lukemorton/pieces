@@ -23,7 +23,7 @@ module Pieces
 
     def sass_config
       if defined? Compass
-        Compass.sass_engine_options
+        { load_paths: Compass.sass_engine_options[:load_paths] }
       else
         { load_paths: "#{path}/app/assets/stylesheets/" }
       end
