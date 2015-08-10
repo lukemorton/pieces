@@ -15,7 +15,14 @@ into a static site or styleguide.
 With Pieces, you define the view of your application with components. Even
 your layout is just another component.
 
-### Installation
+## Welcome early adopters
+
+I'd really appreciate feedback so please do try Pieces out for your current
+or next project. Obviously it's new and changing but I adhere very closely
+to semantic versioning and your styleguide should be a safe place to try
+new things. Thanks in advance, Luke.
+
+## Installation
 
 If installing Pieces into a rails app, add it to your Gemfile:
 
@@ -29,7 +36,7 @@ If building a standalone site, install globally:
 gem install pieces
 ```
 
-### Quick example
+## Quick example
 
 Let's start by defining some "pieces", or components, or views as they are
 better known in the rails world. You'll notice Pieces looks for files in the
