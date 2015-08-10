@@ -1,3 +1,5 @@
+require 'pieces/rails/railtie'
+
 module Pieces
   class Rails
     def mount(options = {})

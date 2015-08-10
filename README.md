@@ -111,15 +111,7 @@ Next you need to initialize your application to use Pieces:
 
 ```
 bundle
-bundle exec pieces init
-```
-
-Now mount Pieces in your `config/routes.rb`:
-
-``` ruby
-Rails.application.routes.draw do
-  mount Pieces::Rails.new.mount, at: '/styleguide'
-end
+bundle exec rails g pieces:rails:install
 ```
 
 Edit your `config/pieces.yml` to demo some of your components.
@@ -131,14 +123,6 @@ bundle exec rails s
 ```
 
 And then visit [http://localhost:3000/styleguide](http://localhost:3000/styleguide)
-
-Alternatively you can run your styleguide without rails:
-
-```
-bundle exec pieces s
-```
-
-And then visit [http://localhost:8080](http://localhost:8080)
 
 ## Create new static site
 
@@ -239,7 +223,7 @@ about:
 
 The child pieces will be rendered in order and passed into the parent
 "layouts/application" piece as `yield`. If you had
-`app/views/layouts/application.html.erb` then you can call yield like so:
+`app/views/layouts/pieces.html.erb` then you can call yield like so:
 
 ``` erb
 <html>
