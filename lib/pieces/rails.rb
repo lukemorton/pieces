@@ -2,10 +2,16 @@ require 'pieces/rails/railtie'
 
 module Pieces
   class Rails
-    def mount(options = {})
-      path = options[:path] || Dir.pwd
-      Pieces::Listener.new(path: path, build_method: :build_routes).listen
-      Pieces::Server.new(options.merge(path: path)).app
+    attr_reader :path, :force_polling
+
+    def initialize(options = {})
+      @path = path || Dir.pwd
+      @force_polling = options[:force_polling]
+    end
+
+    def mount
+      Pieces::Listener.new(path: path, build_method: :build_routes, force_polling: force_polling).listen
+      Pieces::Server.new(path: path).app
     end
   end
 end

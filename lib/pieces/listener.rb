@@ -2,15 +2,17 @@ module Pieces
   class Listener
     attr_reader :path
     attr_reader :build_method
+    attr_reader :force_polling
 
     def initialize(config = {})
       @path = config[:path] || Dir.pwd
       @build_method = config[:build_method] || :build
+      @force_polling = config[:force_polling] || false
       build_pieces
     end
 
     def listen
-      Listen.to("#{path}/config/", "#{path}/app/") do
+      Listen.to("#{path}/config/", "#{path}/app/", force_polling: force_polling) do
         print "Rebuilding #{path}... "
         build_pieces
         puts 'done.'
