@@ -13,17 +13,28 @@ module Pieces
     def initialize(config)
       @path = config[:path]
       @route_config ||= YAML.load_file("#{path}/config/pieces.yml")
+      require 'pieces/tilt_extension'
     end
 
     def build
-      require 'pieces/tilt_extension'
-      save_files(build_files)
+      save_files(_build_routes(_build_styles))
+    end
+
+    def build_styles
+      save_files(_build_styles)
+    end
+
+    def build_routes
+      save_files(_build_routes)
     end
 
     private
 
-    def build_files
-      files = StyleCompiler.new(path: path).compile({})
+    def _build_styles(files = {})
+      StyleCompiler.new(path: path).compile(files)
+    end
+
+    def _build_routes(files = {})
       route_compiler = RouteCompiler.new(path: path, globals: route_config['_global'])
 
       routes.reduce(files) do |files, (name, route)|
