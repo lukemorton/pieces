@@ -6,4 +6,19 @@ index:
   _pieces:
     - layouts/pieces:
         _pieces:
-          - _header: {}
+          - _header:
+              _pieces:
+                - _branding: {}
+          - articles/_summary:
+              article:
+                title: 'A standard artile summary'
+                excerpt: 'This summary does not deserve any special attention.'
+          - articles/_summary:
+              modifier: '--latest'
+              article:
+                title: 'Building systems with styleguides'
+                excerpt: 'PSDs or one off website builds are not quite a thing of the past but they certainly are not what all clients want these days.'
+          - _footer:
+              contact_links:
+                - ['Email', 'mailto:lukemorton.dev@gmail.com']
+                - ['Twitter', 'https://twitter.com/lukemorton']
