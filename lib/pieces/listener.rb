@@ -13,9 +13,7 @@ module Pieces
 
     def listen
       Listen.to("#{path}/config/", "#{path}/app/", force_polling: force_polling) do
-        print "Rebuilding #{path}... "
-        build_pieces
-        puts 'done.'
+        rebuild_pieces
       end.tap(&:start)
     end
 
@@ -23,6 +21,31 @@ module Pieces
 
     def build_pieces
       Pieces::Builder.new(path: path).send(build_method)
+    rescue => e
+      output_backtrace(e)
+      exit(1)
+    end
+
+    def rebuild_pieces
+      print "\n[pieces]: Rebuilding #{File.basename(path)}... "
+      Pieces::Builder.new(path: path).send(build_method)
+      puts 'done.'
+    rescue => e
+      puts 'an error occurred.'
+      puts ''
+      output_backtrace(e)
+    end
+
+    def output_backtrace(exception)
+      puts "[pieces]: Exception occured: #{exception.message}"
+      puts '[pieces]:'
+
+      if defined?(::Rails)
+        trace = ::Rails.backtrace_cleaner.clean(exception.backtrace)
+        puts trace.map { |line| "[pieces]:     #{line}" }
+      else
+        puts exception.backtrace.map { |line| "[pieces]:     #{line}" }
+      end
     end
   end
 end
