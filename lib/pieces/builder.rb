@@ -25,13 +25,18 @@ module Pieces
 
     private
 
+    def env
+      @env ||= Server.new(path: path).sprockets_env
+    end
+
     def build_styles(files = {})
-      compiled_css = Server.new(path: path).sprockets_env['pieces.css']
-      files.merge('assets/pieces.css' => { type: 'css', contents: compiled_css })
+      files.merge('assets/pieces.css' => { type: 'css', contents: env['pieces.css'] })
     end
 
     def build_routes(files = {})
-      route_compiler = RouteCompiler.new(path: path, globals: route_config['_global'])
+      route_compiler = RouteCompiler.new(path: path,
+                                         globals: route_config['_global'],
+                                         env: env)
 
       routes.reduce(files) do |files, (name, route)|
         route_compiler.compile(files, name, route)

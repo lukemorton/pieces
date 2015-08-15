@@ -3,10 +3,12 @@ require 'ostruct'
 module Pieces
   class RouteCompiler
     attr_reader :path
+    attr_reader :env
     attr_reader :globals
 
     def initialize(config)
       @path = config[:path] || Dir.pwd
+      @env = config[:env]
       @globals = config[:globals] || {}
     end
 
@@ -36,6 +38,7 @@ module Pieces
 
     def compile_piece(piece, data)
       view_model = ViewModel.new(data['_global'].merge(data))
+      view_model.env = env
       ::Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 
@@ -46,6 +49,8 @@ module Pieces
     end
 
     class ViewModel < OpenStruct
+      attr_accessor :env
+
       begin
         require 'action_view'
         include ActionView::Context
@@ -55,7 +60,15 @@ module Pieces
 
       def initialize(*)
         super
-        _prepare_context if defined?(ActionView)
+        _prepare_context if respond_to?(:_prepare_context)
+      end
+
+      def compute_asset_path(path, options = {})
+        if env.resolve!(path)
+          File.join('/assets', path)
+        else
+          super
+        end
       end
     end
   end
