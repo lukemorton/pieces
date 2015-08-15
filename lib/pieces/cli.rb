@@ -1,5 +1,6 @@
-require 'pieces'
 require 'thor'
+require 'pieces/builder'
+require 'pieces/generator'
 
 module Pieces
   class CLI < Thor

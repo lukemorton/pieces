@@ -1,5 +1,8 @@
 require 'ostruct'
 require 'yaml'
+require 'sprockets'
+require 'pieces/compilers/route_compiler'
+require 'pieces/tilt_extension'
 
 module Pieces
   class Builder
@@ -13,7 +16,6 @@ module Pieces
     def initialize(config)
       @path = config[:path]
       @route_config ||= YAML.load_file("#{path}/config/pieces.yml")
-      require 'pieces/tilt_extension'
     end
 
     def build
