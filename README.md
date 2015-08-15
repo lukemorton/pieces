@@ -73,9 +73,7 @@ We also need to pull this stylesheet into main one for your styleguide.
 **`app/assets/stylesheets/components/article.css`:**
 
 ```css
-/*
- *= require_tree ./components
- */
+/*= require_tree ./components */
 ```
 
 And a layout to pull it together.
@@ -134,7 +132,9 @@ bundle
 bundle exec rails g pieces:rails:install
 ```
 
-Edit your `config/pieces.yml` to demo some of your components.
+Edit your `config/pieces.yml` to demo some of your components. Please see the
+examples in this README as to how it should look. Detailed documentation coming
+soon. Thanks for your patience!
 
 Now boot up rails:
 
@@ -143,6 +143,22 @@ bundle exec rails s
 ```
 
 And then visit [http://localhost:3000/styleguide](http://localhost:3000/styleguide)
+
+To build a static version of your site:
+
+```
+bundle exec pieces build
+```
+
+This will build your styleguide into `build/`.
+
+You can also run pieces server rather than rails for faster development:
+
+```
+bundle exec pieces s
+```
+
+And then visit [http://localhost:8080](http://localhost:8080)
 
 ### Do you use vagrant?
 
