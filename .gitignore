@@ -8,3 +8,4 @@
 /tmp/
 build/
 Gemfile.lock
+.sass-cache
