@@ -28,11 +28,12 @@ module Pieces
     def app
       urls = files_to_serve(path)
       build_path = "#{path}/build"
+      assets_app = sprockets_env
 
       Rack::Builder.app do
         use Rack::Reloader
         use Rack::Static, urls: urls, root: build_path, index: 'index.html'
-        map('/assets') { run sprockets_env } unless defined? ::Rails
+        map('/assets') { run assets_app } unless defined? ::Rails
         run Proc.new { |env| [404, {}, ['Not found']] }
       end
     end
