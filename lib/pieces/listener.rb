@@ -27,7 +27,7 @@ module Pieces
     end
 
     def rebuild_pieces
-      print "\n[pieces]: Rebuilding #{File.basename(path)}... "
+      print "\nRebuilding #{File.basename(path)}... "
       Pieces::Builder.new(path: path).send(build_method)
       puts 'done.'
     rescue => e
@@ -37,15 +37,18 @@ module Pieces
     end
 
     def output_backtrace(exception)
-      puts "[pieces]: Exception occured: #{exception.message}"
-      puts '[pieces]:'
+      puts "Exception<#{exception.class.name}>: #{exception.message}"
+      puts ''
 
       if defined?(::Rails)
         trace = ::Rails.backtrace_cleaner.clean(exception.backtrace)
-        puts trace.map { |line| "[pieces]:     #{line}" }
       else
-        puts exception.backtrace.map { |line| "[pieces]:     #{line}" }
+        trace = exception.backtrace
+          .delete_if { |line| !line.include?(path) }
+          .map { |line| line.sub("#{path}/", '') }
       end
+
+      puts trace.map { |line| "     #{line}" }
     end
   end
 end
