@@ -28,7 +28,7 @@ module Pieces
         unless File.exists?("#{path}/config/pieces.yml")
           puts "We could not find pieces.yml in #{path}/config/"
           puts 'Sorry about that!'
-          exit(1)
+          puts ''
         end
 
         YAML.load_file("#{path}/config/pieces.yml")
