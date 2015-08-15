@@ -46,9 +46,11 @@ module Pieces
     end
 
     class ViewModel < OpenStruct
-      if defined?(ActionView)
+      begin
+        require 'action_view'
         include ActionView::Context
         include ActionView::Helpers
+      rescue LoadError => e
       end
 
       def initialize(*)
