@@ -16,6 +16,13 @@ module Pieces
 
     def initialize(config)
       @path = config[:path]
+
+      unless File.exists?("#{path}/config/pieces.yml")
+        puts "We could not find pieces.yml in #{path}/config/"
+        puts 'Sorry about that!'
+        exit(1)
+      end
+
       @route_config ||= YAML.load_file("#{path}/config/pieces.yml")
     end
 
