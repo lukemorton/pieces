@@ -6,13 +6,13 @@ describe Pieces::Builder do
     context 'build/' do
       subject do
         Dir.chdir('examples/original/build/') do
-          Dir['*']
+          Dir['**/*']
         end
       end
 
       it { is_expected.to include('index.html') }
       it { is_expected.to include('about.html') }
-      it { is_expected.to include('compiled.css') }
+      it { is_expected.to include('assets/pieces.css') }
     end
   end
 end

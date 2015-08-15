@@ -12,7 +12,7 @@ module Pieces
     end
 
     def listen
-      Listen.to("#{path}/config/", "#{path}/app/", force_polling: force_polling) do
+      Listen.to("#{path}/config/", "#{path}/app/views", force_polling: force_polling) do
         rebuild_pieces
       end.tap(&:start)
     end

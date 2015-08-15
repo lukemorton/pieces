@@ -52,7 +52,7 @@ describe Pieces::CLI do
       end
 
       it { is_expected.to include('index.html') }
-      it { is_expected.to include('compiled.css') }
+      it { is_expected.to include('assets/pieces.css') }
     end
 
     context 'unspecified directory' do
@@ -69,7 +69,7 @@ describe Pieces::CLI do
       end
 
       it { is_expected.to include('index.html') }
-      it { is_expected.to include('compiled.css') }
+      it { is_expected.to include('assets/pieces.css') }
     end
   end
 end

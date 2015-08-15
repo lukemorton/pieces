@@ -17,24 +17,17 @@ module Pieces
     end
 
     def build
-      save_files(_build_routes(_build_styles))
-    end
-
-    def build_styles
-      save_files(_build_styles)
-    end
-
-    def build_routes
-      save_files(_build_routes)
+      save_files(build_routes(build_styles))
     end
 
     private
 
-    def _build_styles(files = {})
-      StyleCompiler.new(path: path).compile(files)
+    def build_styles(files = {})
+      compiled_css = Server.new(path: path).sprockets_env['pieces.css']
+      files.merge('assets/pieces.css' => { type: 'css', contents: compiled_css })
     end
 
-    def _build_routes(files = {})
+    def build_routes(files = {})
       route_compiler = RouteCompiler.new(path: path, globals: route_config['_global'])
 
       routes.reduce(files) do |files, (name, route)|

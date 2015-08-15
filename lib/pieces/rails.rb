@@ -10,7 +10,7 @@ module Pieces
     end
 
     def mount
-      Pieces::Listener.new(path: path, build_method: :build_routes, force_polling: force_polling).listen
+      Pieces::Listener.new(path: path, force_polling: force_polling).listen
       Pieces::Server.new(path: path).app
     end
   end
