@@ -1,4 +1,5 @@
 require 'pieces/rails/railtie'
+require 'pieces/server'
 
 module Pieces
   class Rails

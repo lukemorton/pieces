@@ -1,6 +1,5 @@
 require 'pieces/builder'
 require 'pieces/listener'
-require 'pieces/server'
 require 'pieces/rails' if defined?(Rails)
 require 'pieces/version'
 
