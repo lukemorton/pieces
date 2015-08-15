@@ -1,5 +1,6 @@
 describe Pieces::Listener do
   within_tmp_dir
+  silence_output
 
   context 'when first listening' do
     subject do

@@ -1,6 +1,7 @@
 describe Pieces::Generator do
   context 'when test_app is generated' do
     within_tmp_dir
+    silence_output
 
     context 'test_app/' do
       subject do
