@@ -68,12 +68,25 @@ For example, `.article` should be defined like so.
 
 You can use `.css`, `.scss`, `.sass` and `.less` with Pieces.
 
+We also need to pull this stylesheet into main one for your styleguide.
+
+**`app/assets/stylesheets/components/article.css`:**
+
+```css
+/*
+ *= require_tree ./components
+ */
+```
+
+And a layout to pull it together.
+
 **`app/views/layouts/pieces.html.erb`:**
 
 ``` erb
 <html>
   <head>
     <title>{{title}}</title>
+    <link rel="stylesheet" src="/assets/pieces.css" />
   </head>
   <body>
     <%= yield %>
