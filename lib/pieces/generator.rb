@@ -24,6 +24,7 @@ module Pieces
     end
 
     def init
+      directory 'app/assets/stylesheets'
       directory 'app/views'
       copy_file 'config/pieces.yml'
       copy_file 'Gemfile'
