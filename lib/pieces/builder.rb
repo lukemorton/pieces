@@ -12,18 +12,9 @@ module Pieces
     end
 
     attr_reader :path
-    attr_reader :route_config
 
     def initialize(config)
       @path = config[:path]
-
-      unless File.exists?("#{path}/config/pieces.yml")
-        puts "We could not find pieces.yml in #{path}/config/"
-        puts 'Sorry about that!'
-        exit(1)
-      end
-
-      @route_config ||= YAML.load_file("#{path}/config/pieces.yml")
     end
 
     def build
@@ -31,6 +22,18 @@ module Pieces
     end
 
     private
+
+    def route_config
+      @route_config ||= begin
+        unless File.exists?("#{path}/config/pieces.yml")
+          puts "We could not find pieces.yml in #{path}/config/"
+          puts 'Sorry about that!'
+          exit(1)
+        end
+
+        YAML.load_file("#{path}/config/pieces.yml")
+      end
+    end
 
     def env
       @env ||= Server.new(path: path).sprockets_env
