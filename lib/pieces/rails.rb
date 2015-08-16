@@ -6,7 +6,7 @@ module Pieces
     attr_reader :path, :force_polling
 
     def initialize(options = {})
-      @path = path || Dir.pwd
+      @path = path || ::Rails.root || Dir.pwd
       @force_polling = options[:force_polling]
     end
 
