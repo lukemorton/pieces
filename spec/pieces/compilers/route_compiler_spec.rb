@@ -67,7 +67,6 @@ describe Pieces::RouteCompiler do
     end
 
     subject do
-      p sprockets_env
       compiler.compile({}, :index, route_config)['index.html'][:contents]
     end
 
