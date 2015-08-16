@@ -1,3 +1,5 @@
+require 'pieces/backtrace_formatter'
+
 module Pieces
   class Listener
     attr_reader :path
@@ -22,7 +24,7 @@ module Pieces
     def build_pieces
       Pieces::Builder.new(path: path).send(build_method)
     rescue => e
-      output_backtrace(e)
+      puts Pieces::BacktraceFormatter.format(e)
       exit(1)
     end
 
@@ -33,23 +35,7 @@ module Pieces
     rescue => e
       puts 'an error occurred.'
       puts ''
-      output_backtrace(e)
-    end
-
-    def output_backtrace(exception)
-      puts "Exception<#{exception.class.name}>: #{exception.message}"
-      puts ''
-
-      begin
-        require 'rails'
-        trace = ::Rails.backtrace_cleaner.clean(exception.backtrace)
-      rescue LoadError => e
-        trace = exception.backtrace
-          .delete_if { |line| !line.include?(path) }
-          .map { |line| line.sub("#{path}/", '') }
-      end
-
-      puts trace.map { |line| "     #{line}" }
+      puts Pieces::BacktraceFormatter.format(e)
     end
   end
 end
