@@ -2,12 +2,11 @@ require 'ostruct'
 require 'yaml'
 require 'sprockets'
 require 'pieces/compilers/route_compiler'
+require 'pieces/config'
 require 'pieces/server'
 require 'pieces/tilt_extension'
 
 module Pieces
-  class ConfigNotFound < RuntimeError; end
-
   class Builder
     def self.build(config)
       new(config).build
@@ -26,13 +25,7 @@ module Pieces
     private
 
     def route_config
-      @route_config ||= begin
-        if File.exists?("#{path}/config/pieces.yml")
-          YAML.load_file("#{path}/config/pieces.yml")
-        else
-          raise ConfigNotFound.new("We could not find pieces.yml in #{path}/config/")
-        end
-      end
+      @route_config ||= Pieces::Config.new(path: path)
     end
 
     def env
