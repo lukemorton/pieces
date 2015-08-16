@@ -16,6 +16,7 @@ module Pieces
 
     def initialize(config)
       @path = config[:path]
+      @config = config[:config]
     end
 
     def build
@@ -25,7 +26,7 @@ module Pieces
     private
 
     def route_config
-      @route_config ||= Pieces::Config.new(path: path)
+      @config ||= Pieces::Config.new(path: path)
     end
 
     def env
