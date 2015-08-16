@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'capybara'
   spec.add_development_dependency 'sass'
   spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency 'pry-byebug'
 end
