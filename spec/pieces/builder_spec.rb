@@ -15,4 +15,9 @@ describe Pieces::Builder do
       it { is_expected.to include('assets/pieces.css') }
     end
   end
+
+  context 'when pieces.yml cannot be found' do
+    subject { described_class.new({}).build }
+    it { expect { subject }.to raise_error(Pieces::ConfigNotFound) }
+  end
 end

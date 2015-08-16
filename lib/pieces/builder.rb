@@ -6,6 +6,8 @@ require 'pieces/server'
 require 'pieces/tilt_extension'
 
 module Pieces
+  class ConfigNotFound < RuntimeError; end
+
   class Builder
     def self.build(config)
       new(config).build
@@ -25,13 +27,11 @@ module Pieces
 
     def route_config
       @route_config ||= begin
-        unless File.exists?("#{path}/config/pieces.yml")
-          puts "We could not find pieces.yml in #{path}/config/"
-          puts 'Sorry about that!'
-          puts ''
+        if File.exists?("#{path}/config/pieces.yml")
+          YAML.load_file("#{path}/config/pieces.yml")
+        else
+          raise ConfigNotFound.new("We could not find pieces.yml in #{path}/config/")
         end
-
-        YAML.load_file("#{path}/config/pieces.yml")
       end
     end
 
