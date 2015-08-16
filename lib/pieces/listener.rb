@@ -40,9 +40,10 @@ module Pieces
       puts "Exception<#{exception.class.name}>: #{exception.message}"
       puts ''
 
-      if defined?(::Rails)
+      begin
+        require 'rails'
         trace = ::Rails.backtrace_cleaner.clean(exception.backtrace)
-      else
+      rescue LoadError => e
         trace = exception.backtrace
           .delete_if { |line| !line.include?(path) }
           .map { |line| line.sub("#{path}/", '') }
