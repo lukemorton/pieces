@@ -2,8 +2,11 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-
 require 'pieces'
+
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../examples/rails_app/config/environment.rb',  __FILE__)
+require 'rspec/rails'
 
 ROOT_DIR = File.dirname(__FILE__) + '/../'
 
