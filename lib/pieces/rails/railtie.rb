@@ -1,3 +1,5 @@
+require 'rails/railtie'
+
 module Pieces
   class Rails
     class Railtie < ::Rails::Railtie

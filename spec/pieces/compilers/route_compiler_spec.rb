@@ -57,4 +57,20 @@ describe Pieces::RouteCompiler do
       it { is_expected.to include('<h1 class="post__title">Nested global title</h1>') }
     end
   end
+
+  context 'when compiling with rails helpers' do
+    let(:sprockets_env) { Pieces::Server.new(path: 'examples/rails_app/').sprockets_env }
+    let(:compiler) { described_class.new(path: 'examples/rails_app/', env: sprockets_env) }
+
+    let(:route_config) do
+      { '_pieces' => [{ 'layouts/pieces' => {} }] }
+    end
+
+    subject do
+      p sprockets_env
+      compiler.compile({}, :index, route_config)['index.html'][:contents]
+    end
+
+    it { is_expected.to include('<link rel="stylesheet" media="screen" href="/assets/pieces.css" />') }
+  end
 end
