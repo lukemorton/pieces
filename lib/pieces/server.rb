@@ -18,7 +18,7 @@ module Pieces
     end
 
     def sprockets_env
-      Sprockets::Environment.new.tap do |env|
+      Sprockets::Environment.new(path).tap do |env|
         env.append_path 'app/assets/javascripts'
         env.append_path 'app/assets/stylesheets'
         env.append_path 'app/views'
