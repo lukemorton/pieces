@@ -7,7 +7,9 @@ require 'pieces'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../examples/rails_app/config/environment.rb',  __FILE__)
 require 'rspec/rails'
+require 'capybara/rails'
 
+RAILS_APP = Capybara.app
 ROOT_DIR = File.dirname(__FILE__) + '/../'
 
 shared_examples_for 'it is expected to contain boilerplate files' do
