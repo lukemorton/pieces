@@ -11,7 +11,7 @@ index:
                 - _branding: {}
           - articles/_summary:
               article:
-                title: 'A standard artile summary'
+                title: 'A standard article summary'
                 excerpt: 'This summary does not deserve any special attention.'
           - articles/_summary:
               modifier: '--latest'
