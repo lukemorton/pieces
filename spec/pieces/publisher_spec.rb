@@ -3,7 +3,7 @@ describe Pieces::Publisher do
 
   context 'when publishing to github pages' do
     subject do
-      described_class.new(path: 'examples/rails_app/').publish
+      described_class.publish(path: 'examples/rails_app/')
       Net::HTTP.get_response(URI('http://drpheltright.github.io/pieces/'))
     end
 
@@ -11,7 +11,7 @@ describe Pieces::Publisher do
   end
 
   context 'when publishing config missing' do
-    subject { described_class.new(path: 'examples/original/').publish }
+    subject { described_class.publish(path: 'examples/original/') }
     it { expect { subject }.to raise_error(Pieces::PublisherConfigNotFound) }
   end
 end

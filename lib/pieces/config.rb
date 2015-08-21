@@ -1,5 +1,6 @@
 module Pieces
   class ConfigNotFound < RuntimeError; end
+  class PublisherConfigNotFound < RuntimeError; end
 
   class Config < Hash
     attr_reader :path
@@ -15,6 +16,14 @@ module Pieces
 
     def globals
       self['_global']
+    end
+
+    def publish_endpoint
+      if has_key?('_publish')
+        self['_publish'].first
+      else
+        raise PublisherConfigNotFound
+      end
     end
 
     private
