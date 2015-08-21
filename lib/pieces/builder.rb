@@ -12,12 +12,11 @@ module Pieces
       new(config).build
     end
 
-    attr_reader :path, :asset_prefix
+    attr_reader :config, :asset_prefix
 
     def initialize(config)
-      @path = config[:path]
+      @config = config[:config] || Pieces::Config.new(path: config[:path])
       @asset_prefix = config[:asset_prefix]
-      @config = config[:config]
     end
 
     def build
@@ -26,12 +25,8 @@ module Pieces
 
     private
 
-    def route_config
-      @config ||= Pieces::Config.new(path: path)
-    end
-
     def env
-      @env ||= Server.new(path: path).sprockets_env
+      @env ||= Server.new(path: config.path).sprockets_env
     end
 
     def build_styles(files = {})
@@ -39,22 +34,18 @@ module Pieces
     end
 
     def build_routes(files = {})
-      route_compiler = RouteCompiler.new(path: path,
-                                         globals: route_config['_global'],
+      route_compiler = RouteCompiler.new(path: config.path,
+                                         globals: config.globals,
                                          env: env,
                                          asset_prefix: asset_prefix)
 
-      routes.reduce(files) do |files, (name, route)|
+      config.routes.reduce(files) do |files, (name, route)|
         route_compiler.compile(files, name, route)
       end
     end
 
-    def routes
-      route_config.reject { |key, _| key =~ /^_/ }
-    end
-
     def save_files(files)
-      Dir.chdir(path) do
+      Dir.chdir(config.path) do
         FileUtils.rm_rf('build')
         Dir.mkdir('build')
 

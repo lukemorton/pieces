@@ -2,11 +2,19 @@ module Pieces
   class ConfigNotFound < RuntimeError; end
 
   class Config < Hash
-    attr_reader :config, :path
+    attr_reader :path
 
     def initialize(config = {})
       @path = config[:path]
       load_config!
+    end
+
+    def routes
+      reject { |key, _| key =~ /^_/ }
+    end
+
+    def globals
+      self['_global']
     end
 
     private
