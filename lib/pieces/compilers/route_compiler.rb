@@ -5,11 +5,13 @@ module Pieces
     attr_reader :path
     attr_reader :env
     attr_reader :globals
+    attr_reader :asset_prefix
 
     def initialize(config)
       @path = config[:path] || Dir.pwd
       @env = config[:env]
       @globals = config[:globals] || {}
+      @asset_prefix = config[:asset_prefix]
     end
 
     def compile(files, name, route)
@@ -39,6 +41,7 @@ module Pieces
     def compile_piece(piece, data)
       view_model = ViewModel.new(data['_global'].merge(data))
       view_model.env = env
+      view_model.asset_prefix = asset_prefix
       ::Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 
@@ -50,6 +53,7 @@ module Pieces
 
     class ViewModel < OpenStruct
       attr_accessor :env
+      attr_accessor :asset_prefix
 
       begin
         require 'action_view'
@@ -65,7 +69,7 @@ module Pieces
 
       def compute_asset_path(path, options = {})
         if env.resolve!(path)
-          File.join('/assets', path)
+          File.join(asset_prefix || '/assets', path)
         else
           super
         end

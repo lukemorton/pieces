@@ -2,6 +2,10 @@ _global:
   title: 'Your Site!!'
   footer: 'Hey'
 
+_publish:
+  - type: github
+    remote: https://github.com/drpheltright/pieces.git
+
 index:
   _pieces:
     - layouts/pieces:

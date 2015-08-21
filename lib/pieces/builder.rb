@@ -12,10 +12,11 @@ module Pieces
       new(config).build
     end
 
-    attr_reader :path
+    attr_reader :path, :asset_prefix
 
     def initialize(config)
       @path = config[:path]
+      @asset_prefix = config[:asset_prefix]
       @config = config[:config]
     end
 
@@ -40,7 +41,8 @@ module Pieces
     def build_routes(files = {})
       route_compiler = RouteCompiler.new(path: path,
                                          globals: route_config['_global'],
-                                         env: env)
+                                         env: env,
+                                         asset_prefix: asset_prefix)
 
       routes.reduce(files) do |files, (name, route)|
         route_compiler.compile(files, name, route)
