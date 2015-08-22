@@ -3,7 +3,7 @@ require 'thor'
 module Pieces
   class Generator
     def self.init(config = {})
-      new(config).init
+      new(Pieces::Config.new(config.merge(load: false))).init
     end
 
     def self.from_superclass(method, default)
@@ -12,15 +12,16 @@ module Pieces
 
     include Thor::Actions
     include Thor::Shell
+    include Configurable
 
     source_root File.expand_path('../../../examples/boilerplate', __FILE__)
 
-    attr_reader :path, :options
+    attr_reader :options
 
-    def initialize(config = {})
-      @path = config[:path] || Dir.pwd
+    def initialize(config)
+      super
       @options = {}
-      self.destination_root = config[:path]
+      self.destination_root = config.path
     end
 
     def init

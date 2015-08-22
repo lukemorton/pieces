@@ -6,8 +6,8 @@ module Pieces
     attr_reader :path
 
     def initialize(config = {})
-      @path = config[:path]
-      load_config!
+      @path = config[:path] || Dir.pwd
+      load_config! unless config[:load] == false
     end
 
     def routes
