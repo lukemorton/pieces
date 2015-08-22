@@ -3,7 +3,7 @@ describe Pieces::Server do
 
   context 'when running developent server', type: :feature do
     before(:each) do
-      Pieces::Builder.new(path: 'examples/original').build
+      Pieces::Builder.build(path: 'examples/original')
       Capybara.app = server.app
     end
 

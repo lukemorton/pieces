@@ -28,8 +28,7 @@ module Pieces
 
       def builder
         config['_asset_prefix'] = asset_prefix
-        Pieces::Builder.new(path: config.path,
-                            config: config)
+        Pieces::Builder.new(config)
       end
     end
 

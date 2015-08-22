@@ -26,7 +26,7 @@ module Pieces
     end
 
     def build_pieces
-      Pieces::Builder.new(path: config.path).build
+      Pieces::Builder.new(config).build
     rescue => e
       puts Pieces::BacktraceFormatter.format(e)
       exit(1)
@@ -34,7 +34,7 @@ module Pieces
 
     def rebuild_pieces
       print "\nRebuilding #{File.basename(config.path)}... "
-      Pieces::Builder.new(path: config.path).build
+      Pieces::Builder.new(config).build
       puts 'done.'
     rescue => e
       puts 'an error occurred.'

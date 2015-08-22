@@ -8,15 +8,11 @@ require 'pieces/tilt_extension'
 
 module Pieces
   class Builder
-    def self.build(config)
-      new(config).build
+    def self.build(config = {})
+      new(Config.new(config)).build
     end
 
-    attr_reader :config
-
-    def initialize(config)
-      @config = config[:config] || Pieces::Config.new(path: config[:path])
-    end
+    include Configurable
 
     def build
       save_files(build_routes(build_styles))
@@ -25,7 +21,7 @@ module Pieces
     private
 
     def env
-      @env ||= Server.new(Config.new(path: config.path)).sprockets_env
+      @env ||= Server.new(config).sprockets_env
     end
 
     def build_styles(files = {})

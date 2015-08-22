@@ -1,7 +1,7 @@
 describe Pieces::Rails, type: :feature do
   context 'when booting rails server' do
     before(:each) do
-      Pieces::Builder.new(path: 'examples/rails_app/').build
+      Pieces::Builder.build(path: 'examples/rails_app/')
     end
 
     after(:each) do

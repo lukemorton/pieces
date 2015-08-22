@@ -1,5 +1,5 @@
 describe Pieces::Builder do
-  before(:each) { described_class.new(path: 'examples/original/').build }
+  before(:each) { described_class.build(path: 'examples/original/') }
   after(:each) { FileUtils.rm_rf('examples/original/build') }
 
   context 'when example site is built' do
@@ -17,7 +17,7 @@ describe Pieces::Builder do
   end
 
   context 'when pieces.yml cannot be found' do
-    subject { described_class.new({}).build }
+    subject { described_class.build }
     it { expect { subject }.to raise_error(Pieces::ConfigNotFound) }
   end
 end
