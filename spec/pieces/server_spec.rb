@@ -1,5 +1,5 @@
 describe Pieces::Server do
-  let(:server) { described_class.new(path: 'examples/original') }
+  let(:server) { described_class.new(double(path: 'examples/original')) }
 
   context 'when running developent server', type: :feature do
     before(:each) do

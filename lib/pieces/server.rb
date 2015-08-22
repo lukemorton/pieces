@@ -5,20 +5,20 @@ require 'pieces/listener'
 
 module Pieces
   class Server < Rack::Server
-    attr_reader :path
+    attr_reader :config
 
-    def initialize(options = {})
-      @path = options[:path] || Dir.pwd
-      super
+    def initialize(config = {})
+      @config = config
+      super({})
     end
 
     def start
-      Pieces::Listener.new(path: path).listen
+      Pieces::Listener.new(path: config.path).listen
       super
     end
 
     def sprockets_env
-      Sprockets::Environment.new(path).tap do |env|
+      Sprockets::Environment.new(config.path).tap do |env|
         env.append_path 'app/assets/javascripts'
         env.append_path 'app/assets/stylesheets'
         env.append_path 'app/views'
@@ -26,8 +26,8 @@ module Pieces
     end
 
     def app
-      urls = files_to_serve(path)
-      build_path = "#{path}/build"
+      urls = files_to_serve(config.path)
+      build_path = "#{config.path}/build"
       assets_app = sprockets_env
 
       Rack::Builder.app do
@@ -41,7 +41,7 @@ module Pieces
     private
 
     def files_to_serve(path)
-      Dir["#{path}/build/**/*"].map { |file| file.sub("#{path}/build", '') }
+      Dir["#{config.path}/build/**/*"].map { |file| file.sub("#{config.path}/build", '') }
     end
   end
 end

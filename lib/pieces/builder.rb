@@ -26,7 +26,7 @@ module Pieces
     private
 
     def env
-      @env ||= Server.new(path: config.path).sprockets_env
+      @env ||= Server.new(Config.new(path: config.path)).sprockets_env
     end
 
     def build_styles(files = {})

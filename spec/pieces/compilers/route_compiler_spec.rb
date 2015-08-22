@@ -59,7 +59,7 @@ describe Pieces::RouteCompiler do
   end
 
   context 'when compiling with rails helpers' do
-    let(:sprockets_env) { Pieces::Server.new(path: 'examples/rails_app/').sprockets_env }
+    let(:sprockets_env) { Pieces::Server.new(Pieces::Config.new(path: 'examples/rails_app/')).sprockets_env }
     let(:compiler) { described_class.new(path: 'examples/rails_app/', env: sprockets_env) }
 
     let(:route_config) do
