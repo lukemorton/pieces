@@ -13,7 +13,7 @@ module Pieces
     end
 
     def start
-      Pieces::Listener.new(path: config.path).listen
+      Pieces::Listener.new(config).listen
       super
     end
 

@@ -5,7 +5,7 @@ describe Pieces::Listener do
   context 'when first listening' do
     subject do
       Pieces::Generator.init
-      Pieces::Listener.new.listen
+      Pieces::Listener.listen
       Dir['build/*']
     end
 

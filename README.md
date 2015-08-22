@@ -165,7 +165,7 @@ And then visit [http://localhost:8080](http://localhost:8080)
 If you do you should update Pieces::Rails in your `config/routes.rb` as follows:
 
 ``` ruby
-mount Pieces::Rails.new(force_polling: true).mount, at: '/styleguide' unless Rails.env.production?
+mount Pieces::Rails.mount(force_polling: true), at: '/styleguide' unless Rails.env.production?
 ```
 
 This will tell `listen`, the gem that watches for changes, to poll your app

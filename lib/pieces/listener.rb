@@ -2,35 +2,39 @@ require 'pieces/backtrace_formatter'
 
 module Pieces
   class Listener
-    attr_reader :path
-    attr_reader :build_method
-    attr_reader :force_polling
+    def self.listen(config = {})
+      new(Config.new(config)).listen
+    end
+
+    include Configurable
 
     def initialize(config = {})
-      @path = config[:path] || Dir.pwd
-      @build_method = config[:build_method] || :build
-      @force_polling = config[:force_polling] || false
+      super
       build_pieces
     end
 
     def listen
-      Listen.to("#{path}/config/", "#{path}/app/views", force_polling: force_polling) do
+      Listen.to(*paths, force_polling: config.force_polling?) do
         rebuild_pieces
       end.tap(&:start)
     end
 
     private
 
+    def paths
+      ["#{config.path}/config", "#{config.path}/app/views"]
+    end
+
     def build_pieces
-      Pieces::Builder.new(path: path).send(build_method)
+      Pieces::Builder.new(path: config.path).build
     rescue => e
       puts Pieces::BacktraceFormatter.format(e)
       exit(1)
     end
 
     def rebuild_pieces
-      print "\nRebuilding #{File.basename(path)}... "
-      Pieces::Builder.new(path: path).send(build_method)
+      print "\nRebuilding #{File.basename(config.path)}... "
+      Pieces::Builder.new(path: config.path).build
       puts 'done.'
     rescue => e
       puts 'an error occurred.'

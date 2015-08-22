@@ -26,6 +26,10 @@ module Pieces
       end
     end
 
+    def force_polling?
+      self['_force_polling']
+    end
+
     private
 
     def load_config!

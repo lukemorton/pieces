@@ -3,16 +3,17 @@ require 'pieces/server'
 
 module Pieces
   class Rails
-    attr_reader :path, :force_polling
-
-    def initialize(config = {})
-      @path = path || ::Rails.root
-      @force_polling = config[:force_polling]
+    def self.mount(config = {})
+      config = Config.new(config.merge(path: config[:path] || ::Rails.root,
+                                       'force_polling' => config[:force_polling]))
+      new(config).mount
     end
 
+    include Configurable
+
     def mount
-      Listener.new(path: path, force_polling: force_polling).listen
-      Server.new(Config.new(path: path)).app
+      Listener.new(config).listen
+      Server.new(config).app
     end
   end
 end
