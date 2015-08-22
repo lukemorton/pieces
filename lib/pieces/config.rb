@@ -30,6 +30,10 @@ module Pieces
       self['_force_polling']
     end
 
+    def asset_prefix
+      self['_asset_prefix']
+    end
+
     private
 
     def load_config!
