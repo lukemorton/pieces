@@ -26,12 +26,12 @@ new things. Thanks in advance, Luke.
 
  - [Installation](#installation)
  - [How does Pieces work?](#how-it-works)
- - [Create a UI styleguide for rails](#styleguide-for-rails)
+ - [Create a UI styleguide for rails](#using-with-rails)
  - [Create a static site](#create-static-site)
  - [More examples](#more-examples)
  - [Contributing](#contributing)
 
-## Other links
+**Other links**
 
  - [Configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
  - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md)
