@@ -303,6 +303,10 @@ The child pieces will be rendered in order and passed into the parent
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
+## License
+
+MIT Licensed, [read it here](https://github.com/drpheltright/pieces/blob/master/LICENSE.md).
+
 ## Author
 
 Luke Morton (again)
