@@ -5,6 +5,8 @@ describe Pieces::Publisher do
     let(:remote_dir) do
       Dir.mktmpdir.tap do |remote_dir|
         commands = ['git init',
+                    'git config user.email "luke@example.com"',
+                    'git config --global user.name "Luke"',
                     'touch example.txt',
                     'git add .',
                     'git commit -m "First"',
