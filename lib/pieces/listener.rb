@@ -25,10 +25,14 @@ module Pieces
       ["#{config.path}/config", "#{config.path}/app/views"]
     end
 
+    def backtrace_formatter
+      @backtrace_formatter ||= Pieces::BacktraceFormatter.new(config)
+    end
+
     def build_pieces
       Pieces::Builder.new(config).build
     rescue => e
-      puts Pieces::BacktraceFormatter.format(e)
+      puts backtrace_formatter.format(e)
       exit(1)
     end
 
@@ -39,7 +43,7 @@ module Pieces
     rescue => e
       puts 'an error occurred.'
       puts ''
-      puts Pieces::BacktraceFormatter.format(e)
+      puts backtrace_formatter.format(e)
     end
   end
 end

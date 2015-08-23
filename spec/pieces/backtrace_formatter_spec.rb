@@ -3,7 +3,7 @@ describe Pieces::BacktraceFormatter do
     begin
       raise RuntimeError.new('Uh oh')
     rescue RuntimeError => e
-      described_class.format(e)
+      described_class.new(double(path: 'nice')).format(e)
     end
   end
 

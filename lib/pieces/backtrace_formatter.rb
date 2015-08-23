@@ -1,6 +1,8 @@
 module Pieces
   class BacktraceFormatter
-    def self.format(exception)
+    include Configurable
+
+    def format(exception)
       output = ["Exception<#{exception.class.name}>: #{exception.message}"]
       output << ''
 
@@ -9,8 +11,8 @@ module Pieces
         trace = ::Rails.backtrace_cleaner.clean(exception.backtrace)
       rescue LoadError => e
         trace = exception.backtrace
-          .delete_if { |line| !line.include?(path) }
-          .map { |line| line.sub("#{path}/", '') }
+          # .delete_if { |line| !line.include?(config.path) }
+          # .map { |line| line.sub("#{config.path}/", '') }
       end
 
       output.concat(trace.map { |line| "     #{line}" }).join("\n")
