@@ -12,11 +12,20 @@ The [README][README] contains information for getting started with pieces:
  - [Create a UI styleguide for rails](https://github.com/drpheltright/pieces/blob/master/README.md#using-with-rails)
  - [Create a static site](https://github.com/drpheltright/pieces/blob/master/README.md#create-static-site)
 
-## Further reading
+## Documentation
 
 For documentation and howtos look no further:
 
  - [pieces.yml](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
+
+## Working with Pieces
+
+If you want to work with Pieces in your own project you should probably have a
+look at these links:
+
+ - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/docs/code_of_conduct.md)
+ - [Contributing](https://github.com/drpheltright/pieces/blob/master/docs/contributing.md)
+ - [MIT License](https://github.com/drpheltright/pieces/blob/master/docs/license.md)
 
 ## Help
 
