@@ -43,9 +43,6 @@ module Pieces
 
     def save_files(files)
       Dir.chdir(config.path) do
-        FileUtils.rm_rf('build')
-        Dir.mkdir('build')
-
         files.each do |name, file|
           save_file(name, file)
         end
