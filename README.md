@@ -6,7 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/drpheltright/pieces/badges/coverage.svg)](https://codeclimate.com/github/drpheltright/pieces/coverage)
 
 Pieces is a gem that will take your HTML and CSS components and compile them
-into a static site or styleguide.
+into a static site or styleguide. It can work with or without rails.
 
  - <h5>Build static sites and blogs</h5>
  - <h5>Produce styleguides for your rails applications</h5>
