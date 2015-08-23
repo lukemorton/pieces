@@ -2,16 +2,10 @@ require 'ostruct'
 
 module Pieces
   class RouteCompiler
-    attr_reader :path
-    attr_reader :env
-    attr_reader :globals
-    attr_reader :asset_prefix
+    include Configurable
 
     def initialize(config)
-      @path = config[:path] || Dir.pwd
-      @env = config[:env]
-      @globals = config[:globals] || {}
-      @asset_prefix = config[:asset_prefix]
+      @config = config
     end
 
     def compile(files, name, route)
@@ -21,11 +15,11 @@ module Pieces
     private
 
     def piece_path(piece)
-      Dir["#{path}/app/views/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
+      Dir["#{config.path}/app/views/{#{piece},#{piece}/#{piece},application/#{piece}}.html.*"].first
     end
 
     def route_globals(route)
-      globals.merge(route['_global'] || {})
+      config.globals.merge(route['_global'] || {})
     end
 
     def merge_globals(data, route)
@@ -40,8 +34,8 @@ module Pieces
 
     def compile_piece(piece, data)
       view_model = ViewModel.new(data['_global'].merge(data))
-      view_model.env = env
-      view_model.asset_prefix = asset_prefix
+      view_model.env = config.env
+      view_model.asset_prefix = config.asset_prefix
       ::Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 

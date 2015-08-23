@@ -4,6 +4,7 @@ module Pieces
 
   class Config < Hash
     attr_reader :path
+    attr_accessor :env
 
     def initialize(config = {})
       @path = config[:path] || Dir.pwd

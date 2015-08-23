@@ -1,7 +1,14 @@
 describe Pieces::RouteCompiler do
-  let(:compiler) { described_class.new(path: 'examples/original/') }
+  let(:config) do
+    Pieces::Config.new(path: path).tap do |config|
+      config.env = Pieces::Server.new(config).sprockets_env
+    end
+  end
+
+  let(:compiler) { described_class.new(config) }
 
   context 'when compiling about.html' do
+    let(:path) { 'examples/original/' }
     subject do
       compiler.compile({}, :index, route_config)['index.html'][:contents]
     end
@@ -59,8 +66,7 @@ describe Pieces::RouteCompiler do
   end
 
   context 'when compiling with rails helpers' do
-    let(:sprockets_env) { Pieces::Server.new(Pieces::Config.new(path: 'examples/rails_app/')).sprockets_env }
-    let(:compiler) { described_class.new(path: 'examples/rails_app/', env: sprockets_env) }
+    let(:path) { 'examples/rails_app/' }
 
     let(:route_config) do
       { '_pieces' => [{ 'layouts/pieces' => {} }] }

@@ -14,6 +14,11 @@ module Pieces
 
     include Configurable
 
+    def initialize(config)
+      super
+      config.env = env
+    end
+
     def build
       save_files(build_routes(build_styles))
     end
@@ -29,10 +34,7 @@ module Pieces
     end
 
     def build_routes(files = {})
-      route_compiler = RouteCompiler.new(path: config.path,
-                                         globals: config.globals,
-                                         env: env,
-                                         asset_prefix: config.asset_prefix)
+      route_compiler = RouteCompiler.new(config)
 
       config.routes.reduce(files) do |files, (name, route)|
         route_compiler.compile(files, name, route)
