@@ -28,13 +28,13 @@ new things. Thanks in advance, Luke.
  - [How does Pieces work?](#how-it-works)
  - [Create a UI styleguide for rails](#using-with-rails)
  - [Create a static site](#create-static-site)
- - [More examples](#more-examples)
- - [Contributing](#contributing)
 
 **Other links**
 
  - [Documentation](https://github.com/drpheltright/pieces/blob/master/docs/README.md)
- - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md)
+ - [Examples](https://github.com/drpheltright/pieces/blob/master/examples/README.md)
+ - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/docs/code_of_conduct.md)
+ - [Contributing](https://github.com/drpheltright/pieces/blob/master/docs/contributing.md)
  - [License](https://github.com/drpheltright/pieces/blob/master/LICENSE.md)
 
 ## Installation
@@ -226,22 +226,3 @@ pieces server
 
 Now visit [http://localhost:8080](http://localhost:8080) in your browser.
 
-## More Examples
-
- - [Original example][original-example] using .erb and .mustache (liek wtf!)
- - [Boilerplate example][boilerplate-example] used by `pieces init`
- - [Rails example][rails-example] using Pieces as a styleguide
- - [Babel.js][babel-example] using Pieces as a styleguide
-
-[original-example]: https://github.com/drpheltright/pieces/tree/master/examples/original
-[boilerplate-example]: https://github.com/drpheltright/pieces/tree/master/examples/boilerplate
-[rails-example]: https://github.com/drpheltright/pieces/tree/master/examples/rails
-[babel-example]: https://github.com/drpheltright/pieces/tree/master/examples/babel
-
-## Contributing
-
-1. Fork it ( https://github.com/drpheltright/pieces/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
