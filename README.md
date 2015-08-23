@@ -51,8 +51,8 @@ same places rails does.
 </article>
 ```
 
-You should have a one to one relationship between components, and stylesheets.
-For example, `.article` should be defined like so.
+Ideally you should have a one to one relationship between components, and
+stylesheets. For example, `.article` should be defined like so.
 
 **`app/assets/stylesheets/components/article.css`:**
 
@@ -66,17 +66,20 @@ For example, `.article` should be defined like so.
 }
 ```
 
-You can use `.css`, `.scss`, `.sass` and `.less` with Pieces.
+You can use `.css`, `.scss`, `.sass` and `.less` with Pieces. In fact anything
+supports by [Sprockets](https://github.com/rails/sprockets) since that is what
+we use under the hood.
 
-We also need to pull this stylesheet into main one for your styleguide.
+We also need to pull this stylesheet into your styleguide. By default pieces
+will look for `pieces.css`.
 
-**`app/assets/stylesheets/components/article.css`:**
+**`app/assets/stylesheets/pieces.css`:**
 
 ```css
 /*= require_tree ./components */
 ```
 
-And a layout to pull it together.
+And we need a layout to pull the components together.
 
 **`app/views/layouts/pieces.html.erb`:**
 
