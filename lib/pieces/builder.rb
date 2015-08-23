@@ -20,7 +20,7 @@ module Pieces
     end
 
     def build
-      save_files(build_routes(build_styles))
+      save_files(build_routes(build_assets))
     end
 
     private
@@ -29,8 +29,9 @@ module Pieces
       @env ||= Server.new(config).sprockets_env
     end
 
-    def build_styles(files = {})
-      files.merge('assets/pieces.css' => { type: 'css', contents: env['pieces.css'] })
+    def build_assets(files = {})
+      files.merge('assets/pieces.css' => { type: 'css', contents: env['pieces.css'] },
+                  'assets/pieces.js' => { type: 'js', contents: env['pieces.js'] })
     end
 
     def build_routes(files = {})
