@@ -36,11 +36,11 @@ get onto components in a minute.
 You can generate your HTML into directories quite easily:
 
 ``` yml
-portfolio/a-client:
+portfolio/a-client: # <-- portfolio/a-client.html
   _pieces:
     - carousel: {}
     - case_study: {}
-portfolio/another-client:
+portfolio/another-client: # <-- portfolio/another-client.html
   _pieces:
     - carousel: {}
     - case_study: {}
