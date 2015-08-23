@@ -35,8 +35,10 @@ module Pieces
     class Github < Adapter
       def publish
         FileUtils.rm_rf("#{config.path}/build/")
+        FileUtils.mkdir("#{config.path}/build/")
+        clone_into_build_dir
         builder.build
-        system(commands.join(' && '), chdir: "#{config.path}/build/")
+        commit_and_push_changes
       end
 
       protected
@@ -49,13 +51,19 @@ module Pieces
 
       private
 
-      def commands
-        ['git init',
-         "git remote add github #{config.publish_endpoint['remote']}",
-         "git checkout -b gh-pages",
-         "git add .",
-         "git commit -m 'Commit all the things'",
-         "git push -f github gh-pages"]
+      def exec(*commands)
+        system(commands.join(' && '), chdir: "#{config.path}/build/")
+      end
+
+      def clone_into_build_dir
+        exec("git clone -o pieces_github_pages #{config.publish_endpoint['remote']} .",
+             "git checkout gh-pages")
+      end
+
+      def commit_and_push_changes
+        exec("git add .",
+             "git commit -m 'Commit all the things'",
+             "git push pieces_github_pages gh-pages")
       end
     end
   end

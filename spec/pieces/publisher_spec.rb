@@ -2,12 +2,31 @@ describe Pieces::Publisher do
   silence_output
 
   context 'when publishing to github pages' do
-    subject do
-      described_class.publish(path: 'examples/rails_app/')
-      Net::HTTP.get_response(URI('http://drpheltright.github.io/pieces/'))
+    let(:remote_dir) do
+      Dir.mktmpdir.tap do |remote_dir|
+        commands = ['git init',
+                    'touch example.txt',
+                    'git add .',
+                    'git commit -m "First"',
+                    'git checkout -b gh-pages',
+                    'git checkout master']
+        system(commands.join(' && '), chdir: remote_dir, [:out, :err] => '/dev/null')
+      end
     end
 
-    it { is_expected.to be_a(Net::HTTPSuccess) }
+    let(:config) do
+      Pieces::Config.new(path: 'examples/rails_app/').tap do |config|
+        config['_publish'].first['remote'] = remote_dir
+      end
+    end
+
+    before(:each) { described_class.new(config).publish }
+    after(:each) { FileUtils.rm_rf(remote_dir) }
+
+    subject { %x{cd #{remote_dir} && git checkout -q gh-pages && git log} }
+
+    it { is_expected.to include('First') }
+    it { is_expected.to include('Commit all the things') }
   end
 
   context 'when publishing config missing' do

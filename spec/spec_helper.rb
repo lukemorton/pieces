@@ -10,7 +10,6 @@ require File.expand_path('../../examples/rails_app/config/environment.rb',  __FI
 require 'rspec/rails'
 require 'capybara/rails'
 
-
 RAILS_APP = Capybara.app
 ROOT_DIR = File.dirname(__FILE__) + '/../'
 
@@ -36,6 +35,7 @@ module SilenceOutput
   def silence_output
     before(:each) do
       allow($stdout).to receive(:write)
+      allow($stderr).to receive(:write)
     end
   end
 end
