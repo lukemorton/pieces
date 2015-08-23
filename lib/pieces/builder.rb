@@ -1,7 +1,7 @@
 require 'ostruct'
 require 'yaml'
 require 'sprockets'
-require 'pieces/compilers/route_compiler'
+require 'pieces/route_compiler'
 require 'pieces/config'
 require 'pieces/server'
 require 'pieces/tilt_extension'
