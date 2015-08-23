@@ -25,10 +25,10 @@ new things. Thanks in advance, Luke.
 ## Table of Contents
 
  - [Installation](#installation)
- - [Quick example](#quick-example)
+ - [How pieces works](#quick-example)
  - [Create styleguide for rails](#styleguide-for-rails)
  - [Create static site](#create-static-site)
- - [Documentation](#documentation)
+ - [Learn about pieces.yml configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
  - [More examples](#more-examples)
  - [Code of Conduct](#code-of-conduct)
  - [Contributing](#contributing)
@@ -219,10 +219,6 @@ pieces server
 ```
 
 Now visit [http://localhost:8080](http://localhost:8080) in your browser.
-
-## Documentation
-
- - [Learn about pieces.yml configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
 
 ## More Examples
 
