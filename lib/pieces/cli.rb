@@ -1,4 +1,6 @@
 require 'thor'
+require 'pieces/config'
+require 'pieces/configurable'
 require 'pieces/builder'
 require 'pieces/generator'
 
