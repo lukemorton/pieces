@@ -33,7 +33,7 @@ new things. Thanks in advance, Luke.
 
 **Other links**
 
- - [Configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
+ - [Documentation](https://github.com/drpheltright/pieces/blob/master/docs/README.md)
  - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md)
  - [License](https://github.com/drpheltright/pieces/blob/master/LICENSE.md)
 
