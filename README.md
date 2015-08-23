@@ -285,13 +285,15 @@ The child pieces will be rendered in order and passed into the parent
 
 ## More Examples
 
- - [Original example][original] using .erb and .mustache (liek wtf!)
- - [Boilerplate example][boilerplate] used by `pieces init`
- - [Rails example][rails] using Pieces as a styleguide
+ - [Original example][original-example] using .erb and .mustache (liek wtf!)
+ - [Boilerplate example][boilerplate-example] used by `pieces init`
+ - [Rails example][rails-example] using Pieces as a styleguide
+ - [Babel.js][babel-example] using Pieces as a styleguide
 
-[original]: https://github.com/drpheltright/pieces/tree/master/examples/original
-[boilerplate]: https://github.com/drpheltright/pieces/tree/master/examples/boilerplate
-[rails]: https://github.com/drpheltright/pieces/tree/master/examples/rails
+[original-example]: https://github.com/drpheltright/pieces/tree/master/examples/original
+[boilerplate-example]: https://github.com/drpheltright/pieces/tree/master/examples/boilerplate
+[rails-example]: https://github.com/drpheltright/pieces/tree/master/examples/rails
+[babel-example]: https://github.com/drpheltright/pieces/tree/master/examples/babel
 
 ## Contributing
 

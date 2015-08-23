@@ -1,0 +1,19 @@
+_global:
+  title: 'Styleguide!'
+
+index:
+  _pieces:
+    - layouts/pieces:
+        _pieces:
+          - articles/article: { title: 'Nice', content: '<p>Bob' }
+          - articles/article: { title: 'Bob' }
+          - articles/article: { title: 'Cooob' }
+          - articles/article: { title: 'Adele' }
+          - articles/article: { title: 'Hehe' }
+
+info:
+  _pieces:
+    - layouts/pieces:
+        title: 'About this style guide'
+        _pieces:
+          - articles/article: { title: 'About this guide' }
