@@ -25,13 +25,16 @@ new things. Thanks in advance, Luke.
 ## Table of Contents
 
  - [Installation](#installation)
- - [How pieces works](#quick-example)
- - [Create styleguide for rails](#styleguide-for-rails)
- - [Create static site](#create-static-site)
- - [Learn about pieces.yml configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
+ - [How does Pieces work?](#how-it-works)
+ - [Create a UI styleguide for rails](#styleguide-for-rails)
+ - [Create a static site](#create-static-site)
  - [More examples](#more-examples)
- - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md)
  - [Contributing](#contributing)
+
+## Other links
+
+ - [Configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
+ - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md)
  - [License](https://github.com/drpheltright/pieces/blob/master/LICENSE.md)
 
 ## Installation
@@ -48,7 +51,7 @@ If building a standalone site, install globally:
 gem install pieces
 ```
 
-## Quick example
+## How it works
 
 Let's start by defining some "pieces", or components, or views as they are
 better known in the rails world. You'll notice Pieces looks for files in the
@@ -132,9 +135,13 @@ pieces server
 Now visit [http://localhost:8080](http://localhost:8080) to see your site! If
 you change your `config/pieces.yml` or views they will be reflected on the site.
 
-## Styleguide for rails
+## Using with rails
 
-Firstly, ensure you have added Pieces to your `Gemfile`:
+Want to create a styleguide or UI design pattern library for your rails app? If
+so you're in the right place. Styleguides pull together reusable components
+into micro site that documents how and when to use them.
+
+To get started ensure you have added Pieces to your application's `Gemfile`:
 
 ``` ruby
 gem 'pieces'
