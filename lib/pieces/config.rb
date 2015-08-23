@@ -16,7 +16,7 @@ module Pieces
     end
 
     def globals
-      self['_global']
+      self['_global'] || {}
     end
 
     def publish_endpoint
