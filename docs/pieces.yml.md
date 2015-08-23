@@ -76,8 +76,8 @@ allows you to categories your components.
 about:
   _pieces:
     - header: {}
-    - copy/intro: {}
-    - galleries/photo: {}
+    - copy/intro: {} # <-- component in directory
+    - galleries/photo: {} # <-- component in directory
     - footer: {}
 ```
 
@@ -93,7 +93,7 @@ You can place your content in a layout quite easily with nested pieces.
 about:
   _pieces:
     - layouts/pieces:
-        _pieces:
+        _pieces: # <-- nested within layouts/pieces
           - header: {}
           - copy/intro: {}
           - galleries/photo: {}
