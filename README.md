@@ -31,11 +31,11 @@ new things. Thanks in advance, Luke.
 
 **Other links**
 
- - [Documentation](https://github.com/drpheltright/pieces/blob/master/docs/README.md)
- - [Examples](https://github.com/drpheltright/pieces/blob/master/examples/README.md)
+ - [Documentation](https://github.com/drpheltright/pieces/tree/master/docs)
+ - [Examples](https://github.com/drpheltright/pieces/tree/master/examples)
  - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/docs/code_of_conduct.md)
  - [Contributing](https://github.com/drpheltright/pieces/blob/master/docs/contributing.md)
- - [License](https://github.com/drpheltright/pieces/blob/master/LICENSE.md)
+ - [License](https://github.com/drpheltright/pieces/blob/master/docs/license.md)
 
 ## Installation
 
