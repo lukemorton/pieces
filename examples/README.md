@@ -1,4 +1,6 @@
-# More Examples
+# Examples
+
+Within this directory you will find the following examples:
 
  - [Original example][original-example] using .erb and .mustache (liek wtf!)
  - [Boilerplate example][boilerplate-example] used by `pieces init`
