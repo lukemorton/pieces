@@ -12,8 +12,9 @@ into a static site or styleguide. It can work with or without rails.
  - <h5>Produce styleguides for your rails applications</h5>
  - <h5>Mock up designs</h5>
 
-With Pieces, you define the view of your application with components. Even
-your layout is just another component.
+Define the view of your application with reusable components. Even your layout
+is just another component. Use Pieces to pull together these components into
+websites, styleguides and mock ups.
 
 ## Welcome early adopters
 
