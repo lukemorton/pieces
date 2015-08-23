@@ -30,10 +30,9 @@ new things. Thanks in advance, Luke.
  - [Create static site](#create-static-site)
  - [Learn about pieces.yml configuration](https://github.com/drpheltright/pieces/blob/master/docs/configuration.md)
  - [More examples](#more-examples)
- - [Code of Conduct](#code-of-conduct)
+ - [Code of Conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md)
  - [Contributing](#contributing)
- - [License](#license)
- - [Author](#author)
+ - [License](https://github.com/drpheltright/pieces/blob/master/LICENSE.md)
 
 ## Installation
 
@@ -232,11 +231,6 @@ Now visit [http://localhost:8080](http://localhost:8080) in your browser.
 [rails-example]: https://github.com/drpheltright/pieces/tree/master/examples/rails
 [babel-example]: https://github.com/drpheltright/pieces/tree/master/examples/babel
 
-## Code of Conduct
-
-We have a [code of conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md).
-If you want to participate in our project, Pieces, then please obide by it.
-
 ## Contributing
 
 1. Fork it ( https://github.com/drpheltright/pieces/fork )
@@ -244,11 +238,3 @@ If you want to participate in our project, Pieces, then please obide by it.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-## License
-
-MIT Licensed, [read it here](https://github.com/drpheltright/pieces/blob/master/LICENSE.md).
-
-## Author
-
-[Luke Morton](http://lukemorton.co.uk)
