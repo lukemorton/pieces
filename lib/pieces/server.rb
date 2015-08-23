@@ -5,9 +5,13 @@ require 'pieces/listener'
 
 module Pieces
   class Server < Rack::Server
+    def self.start(config = {})
+      new(Config.new(config)).start
+    end
+
     attr_reader :config
 
-    def initialize(config = {})
+    def initialize(config)
       @config = config
       super({})
     end
