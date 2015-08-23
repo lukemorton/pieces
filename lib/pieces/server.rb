@@ -36,7 +36,7 @@ module Pieces
 
       Rack::Builder.app do
         use Rack::Reloader
-        use Rack::Static, urls: urls, root: build_path, index: 'index.html'
+        use Rack::Static, urls: [''], root: build_path, index: 'index.html'
         map('/assets') { run assets_app } unless defined? ::Rails
         run Proc.new { |env| [404, {}, ['Not found']] }
       end
