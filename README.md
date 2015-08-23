@@ -22,6 +22,19 @@ or next project. Obviously it's new and changing but I adhere very closely
 to semantic versioning and your styleguide should be a safe place to try
 new things. Thanks in advance, Luke.
 
+## Table of Contents
+
+ - [Installation](#installation)
+ - [Quick example](#quick-example)
+ - [Create styleguide for rails](#styleguide-for-rails)
+ - [Create static site](#create-static-site)
+ - [Documentation](#documentation)
+ - [More examples](#more-examples)
+ - [Code of Conduct](#code-of-conduct)
+ - [Contributing](#contributing)
+ - [License](#license)
+ - [Author](#author)
+
 ## Installation
 
 If installing Pieces into a rails app, add it to your Gemfile:
@@ -120,7 +133,7 @@ pieces server
 Now visit [http://localhost:8080](http://localhost:8080) to see your site! If
 you change your `config/pieces.yml` or views they will be reflected on the site.
 
-## Use as styleguide for rails
+## Styleguide for rails
 
 Firstly, ensure you have added Pieces to your `Gemfile`:
 
@@ -174,7 +187,7 @@ mount Pieces::Rails.mount(force_polling: true), at: '/styleguide' unless Rails.e
 This will tell `listen`, the gem that watches for changes, to poll your app
 for changes. This is required for vagrant!
 
-## Create new static site
+## Create static site
 
 To create a new static site with Pieces:
 
