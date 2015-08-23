@@ -35,6 +35,10 @@ module Pieces
       self['_asset_prefix']
     end
 
+    def reload!
+      load_config!
+    end
+
     private
 
     def load_config!

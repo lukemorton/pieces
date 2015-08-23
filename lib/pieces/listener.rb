@@ -38,6 +38,7 @@ module Pieces
 
     def rebuild_pieces
       print "\nRebuilding #{File.basename(config.path)}... "
+      config.reload!
       Pieces::Builder.new(config).build
       puts 'done.'
     rescue => e
