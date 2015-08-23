@@ -16,7 +16,7 @@ The [README][README] contains information for getting started with pieces:
 
 For documentation and howtos look no further:
 
- - [pieces.yml](https://github.com/drpheltright/pieces/blob/master/docs/pieces.yml.md)
+ - [pieces.yml](https://github.com/drpheltright/pieces/blob/master/docs/pieces.yml.md) (you really ought to read this)
 
 ## Working with Pieces
 
