@@ -295,6 +295,11 @@ The child pieces will be rendered in order and passed into the parent
 [rails-example]: https://github.com/drpheltright/pieces/tree/master/examples/rails
 [babel-example]: https://github.com/drpheltright/pieces/tree/master/examples/babel
 
+## Code of Conduct
+
+We have a [code of conduct](https://github.com/drpheltright/pieces/blob/master/CODE_OF_CONDUCT.md).
+If you want to participate in our project, Pieces, then please obide by it.
+
 ## Contributing
 
 1. Fork it ( https://github.com/drpheltright/pieces/fork )
