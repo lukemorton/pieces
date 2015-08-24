@@ -22,7 +22,7 @@ module Pieces
     private
 
     def paths
-      ["#{config.path}/config", "#{config.path}/app/views"]
+      ["#{config.path}/config", "#{config.path}/app/assets", "#{config.path}/app/views"]
     end
 
     def backtrace_formatter
