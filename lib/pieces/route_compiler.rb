@@ -9,7 +9,7 @@ module Pieces
     end
 
     def compile(files, name, route)
-      files.merge("#{name}.html" => { contents: yield_pieces(route), type: 'html' })
+      files.merge("#{name}.html" => { contents: yield_pieces(route), type: 'text/html' })
     end
 
     private
