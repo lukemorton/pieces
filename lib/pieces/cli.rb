@@ -21,7 +21,7 @@ module Pieces
 
     desc 'server DIR', 'serve application in DIR'
     def server(path = Dir.pwd)
-      puts "Serving pieces from #{path}/build... "
+      puts "Serving pieces from #{path}... "
       Pieces::Server.start(path: path)
     end
 

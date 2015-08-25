@@ -16,7 +16,6 @@ module Pieces
     include Configurable
 
     def mount
-      Listener.new(config).listen
       Server.new(config).app
     end
   end

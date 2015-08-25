@@ -7,7 +7,8 @@ module Pieces
     attr_accessor :env
 
     def initialize(config = {})
-      @path = config[:path] || Dir.pwd
+      @path = config.delete(:path) || Dir.pwd
+      merge!(config)
       load_config! unless config[:load] == false
     end
 
@@ -33,6 +34,10 @@ module Pieces
 
     def asset_prefix
       self['_asset_prefix']
+    end
+
+    def mounted_at
+      self['_mounted_at']
     end
 
     def reload!

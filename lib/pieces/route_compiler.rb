@@ -33,9 +33,7 @@ module Pieces
     end
 
     def compile_piece(piece, data)
-      view_model = ViewModel.new(data['_global'].merge(data))
-      view_model.env = config.env
-      view_model.asset_prefix = config.asset_prefix
+      view_model = ViewModel.new(data['_global'].merge(data).merge(config: config))
       ::Tilt.new(piece_path(piece)).render(view_model) { yield_pieces(data) }
     end
 
@@ -46,9 +44,6 @@ module Pieces
     end
 
     class ViewModel < OpenStruct
-      attr_accessor :env
-      attr_accessor :asset_prefix
-
       begin
         require 'action_view'
         include ActionView::Context
@@ -59,6 +54,14 @@ module Pieces
       def initialize(*)
         super
         _prepare_context if respond_to?(:_prepare_context)
+      end
+
+      def asset_prefix
+        config.asset_prefix
+      end
+
+      def env
+        config.env
       end
 
       def compute_asset_path(path, options = {})

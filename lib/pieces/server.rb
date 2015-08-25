@@ -1,7 +1,7 @@
 require 'rack'
 require 'listen'
 require 'sprockets'
-require 'pieces/listener'
+require 'pieces/app'
 
 module Pieces
   class Server < Rack::Server
@@ -14,11 +14,6 @@ module Pieces
     def initialize(config)
       @config = config
       super({})
-    end
-
-    def start
-      Pieces::Listener.new(config).listen
-      super
     end
 
     def sprockets_env
@@ -46,12 +41,13 @@ module Pieces
       urls = files_to_serve(config.path)
       build_path = "#{config.path}/build"
       assets_app = sprockets_env
+      config.env = sprockets_env
+      app = App.new(config)
 
       Rack::Builder.app do
         use Rack::Reloader
         map('/assets') { run assets_app } unless defined? ::Rails
-        use Rack::Static, urls: [''], root: build_path, index: 'index.html'
-        run Proc.new { |env| [404, {}, ['Not found']] }
+        run app
       end
     end
 

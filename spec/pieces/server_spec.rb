@@ -1,15 +1,13 @@
 describe Pieces::Server do
-  let(:server) { described_class.new(double(path: 'examples/original')) }
+  let(:server) { described_class.new(Pieces::Config.new(path: 'examples/original')) }
 
   context 'when running developent server', type: :feature do
     before(:each) do
-      Pieces::Builder.build(path: 'examples/original')
       Capybara.app = server.app
     end
 
     after(:each) do
       Capybara.app = RAILS_APP
-      FileUtils.rm_rf('examples/original/build/')
     end
 
     it 'should render without errors' do

@@ -1,5 +1,6 @@
 require 'pieces/config'
 require 'pieces/configurable'
+require 'pieces/server'
 require 'pieces/builder'
 require 'pieces/generator'
 require 'pieces/publisher'
