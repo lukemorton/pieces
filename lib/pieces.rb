@@ -1,5 +1,8 @@
 require 'pieces/config'
 require 'pieces/configurable'
+require 'pieces/app'
+require 'pieces/route_compiler'
+require 'pieces/tilt_extension'
 require 'pieces/server'
 require 'pieces/builder'
 require 'pieces/generator'

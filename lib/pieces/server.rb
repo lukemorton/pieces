@@ -1,7 +1,5 @@
 require 'rack'
-require 'listen'
 require 'sprockets'
-require 'pieces/app'
 
 module Pieces
   class Server < Rack::Server
