@@ -25,6 +25,8 @@ module Pieces
       Sprockets::Environment.new(config.path).tap do |env|
         env.append_path 'app/assets/javascripts'
         env.append_path 'app/assets/stylesheets'
+        env.append_path 'vendor/assets/stylesheets'
+        env.append_path 'vendor/assets/javascripts'
         env.append_path 'app/assets'
         env.append_path 'app/views'
         env.js_compressor = :uglify if defined? ::Uglifier
