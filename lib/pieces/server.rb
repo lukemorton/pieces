@@ -44,7 +44,7 @@ module Pieces
 
       Rack::Builder.app do
         use Rack::Reloader
-        map('/assets') { run assets_app } unless defined? ::Rails
+        map('/assets') { run assets_app }
         run app
       end
     end
