@@ -4,6 +4,7 @@
     <title><%= title %></title>
 
     <style>
+      <%= env['critical.css'] %>
       <% components = config.components_in_route('index') %>
       <% components.map { |(component, data)| component if data['critical'] }.compact.each do |component| %>
         <%= env["components/#{component}.css"] %>
