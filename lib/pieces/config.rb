@@ -16,6 +16,10 @@ module Pieces
       reject { |key, _| key =~ /^_/ }
     end
 
+    def components_in_route(route)
+      components_in_piece(routes[route])
+    end
+
     def globals
       self['_global'] || {}
     end
@@ -47,6 +51,15 @@ module Pieces
         merge!(YAML.load_file("#{path}/config/pieces.yml"))
       else
         raise ConfigNotFound.new("We could not find pieces.yml in #{path}/config/")
+      end
+    end
+
+    def components_in_piece(parent_piece)
+      (parent_piece['_pieces'] || []).reduce([]) do |components, piece|
+        piece_name, data = piece.first
+        data = (parent_piece['_global'] || {}).merge(data['_global'] || {}).merge(data)
+        components << [piece_name, data]
+        components.concat(components_in_piece(data))
       end
     end
   end
