@@ -183,17 +183,6 @@ bundle exec pieces s
 
 And then visit [http://localhost:8080](http://localhost:8080)
 
-### Do you use vagrant?
-
-If you do you should update Pieces::Rails in your `config/routes.rb` as follows:
-
-``` ruby
-mount Pieces::Rails.mount(force_polling: true), at: '/styleguide' unless Rails.env.production?
-```
-
-This will tell `listen`, the gem that watches for changes, to poll your app
-for changes. This is required for vagrant!
-
 ## Create static site
 
 To create a new static site with Pieces:

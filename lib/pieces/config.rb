@@ -28,10 +28,6 @@ module Pieces
       end
     end
 
-    def force_polling?
-      self['_force_polling']
-    end
-
     def asset_prefix
       self['_asset_prefix']
     end
