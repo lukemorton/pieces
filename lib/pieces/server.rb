@@ -29,8 +29,16 @@ module Pieces
         env.append_path 'vendor/assets/javascripts'
         env.append_path 'app/assets'
         env.append_path 'app/views'
-        env.js_compressor = :uglify if defined? ::Uglifier
-        env.css_compressor = :scss if defined? ::Sass
+        env.append_path 'app/views'
+
+        if defined? ::Sass
+          ::Sass.load_paths.each { |path| env.append_path(path) }
+          env.css_compressor = :scss
+        end
+
+        if defined? ::Uglifier
+          env.js_compressor = :uglify
+        end
       end
     end
 
