@@ -4,11 +4,11 @@
     <title><%= title %></title>
 
     <style>
-      <%= File.read('build/assets/critical.css') %>
+      <%= env['critical.css'] %>
     </style>
 
     <script>
-      <%= File.read('build/assets/lazy.js') %>
+      <%= env['lazy.js'] %>
     </script>
 
     <noscript>

@@ -16,7 +16,7 @@ index:
           - articles/article: { title: 'Hehe', content: '<p>Some nice example content' }
           - footer: {}
 
-info:
+info/bob:
   _pieces:
     - layouts/pieces:
         title: 'About this style guide'
