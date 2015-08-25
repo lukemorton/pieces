@@ -1,5 +1,5 @@
-//= require ./vendor/load_css
-//= require ./vendor/webfontloader
+//= require load_css
+//= require webfontloader
 //= require_self
 
 loadCSS('/assets/lazy.css')
