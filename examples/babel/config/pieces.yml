@@ -14,6 +14,7 @@ index:
           - articles/article: { title: 'Cooob', content: '<p>Some nice example content' }
           - articles/article: { title: 'Adele', content: '<p>Some nice example content' }
           - articles/article: { title: 'Hehe', content: '<p>Some nice example content' }
+          - footer: {}
 
 info:
   _pieces:

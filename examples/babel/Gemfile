@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'babel-transpiler'
-gem 'bourbon'
-gem 'neat'
-gem 'pieces', path: '../..'
+gem 'pieces', path: '../../../pieces'
+gem 'bits-n-pieces', path: '../../../bits-n-pieces'
+
+# For debugging
 gem 'pry-byebug'
-gem 'rack', github: 'rack/rack'
-gem 'sass'
+
+# For sprockets babel support
 gem 'sprockets', github: 'rails/sprockets'
-gem 'uglifier'

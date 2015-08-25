@@ -1,5 +1,5 @@
-@import 'helpers/media_queries';
-@import 'helpers/columns';
+@import 'bits/media_queries';
+@import 'bits/columns';
 
 .page {
   @include outer-container;

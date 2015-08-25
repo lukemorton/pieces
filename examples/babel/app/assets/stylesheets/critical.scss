@@ -1,3 +1,4 @@
-//= require ./components/reset
+//= require bits/reset
 //= require ./components/html
-//= require_tree ./components
+//= require ./components/page
+//= require_tree ./components/articles
