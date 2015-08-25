@@ -17,7 +17,7 @@ module Pieces
       end
 
       def mount_styleguide
-        route "mount Pieces::Rails.new.mount, at: '/styleguide' unless Rails.env.production?"
+        route "mount Pieces::Rails.mount(at: '/styleguide') unless Rails.env.production?"
       end
 
       def gitignore
