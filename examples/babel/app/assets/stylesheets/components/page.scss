@@ -1,0 +1,15 @@
+@import 'helpers/media_queries';
+@import 'helpers/columns';
+
+.page {
+  @include outer-container;
+  padding: 1em;
+
+  @include from(tablet) {
+    padding: 2em;
+  }
+}
+
+.page__content {
+  @include span-columns(12);
+}

@@ -1,0 +1,21 @@
+@import 'bourbon';
+@import 'neat';
+
+$breakpoints: (
+  from: (
+    tablet: new-breakpoint(min-width 768px 4),
+    desktop: new-breakpoint(min-width 1080px 4),
+    widescreen: new-breakpoint(min-width 1400px 4),
+  ),
+  upto: (
+    tablet: new-breakpoint(max-width 768px-1 4),
+    desktop: new-breakpoint(max-width 1080px-1 4),
+    widescreen: new-breakpoint(max-width 1400px-1 4),
+  )
+);
+
+@mixin from($breakpoint) {
+  @include media(map-get(map-get($breakpoints, from), $breakpoint)) {
+    @content;
+  }
+}

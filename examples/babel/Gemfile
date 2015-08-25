@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'babel-transpiler'
+gem 'bourbon'
+gem 'neat'
 gem 'pieces', path: '../..'
 gem 'pry-byebug'
 gem 'rack', github: 'rack/rack'
 gem 'sass'
 gem 'sprockets', github: 'rails/sprockets'
+gem 'uglifier'

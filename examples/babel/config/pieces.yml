@@ -5,11 +5,15 @@ index:
   _pieces:
     - layouts/pieces:
         _pieces:
+          - header:
+              _pieces:
+                - branding: {}
+          - articles/articles_introduction: { intro: '<p>Some articles' }
           - articles/article: { title: 'Nice', content: '<p>Bob' }
-          - articles/article: { title: 'Bob' }
-          - articles/article: { title: 'Cooob' }
-          - articles/article: { title: 'Adele' }
-          - articles/article: { title: 'Hehe' }
+          - articles/article: { title: 'Bob', content: '<p>Some nice example content' }
+          - articles/article: { title: 'Cooob', content: '<p>Some nice example content' }
+          - articles/article: { title: 'Adele', content: '<p>Some nice example content' }
+          - articles/article: { title: 'Hehe', content: '<p>Some nice example content' }
 
 info:
   _pieces:
