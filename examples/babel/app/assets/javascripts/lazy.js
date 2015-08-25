@@ -2,7 +2,7 @@
 //= require webfontloader
 //= require_self
 
-loadCSS('/assets/lazy.css')
+loadCSS('/assets/application.css')
 
 WebFont.load({
   google: {

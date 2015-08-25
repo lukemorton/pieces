@@ -6,9 +6,13 @@ index:
     - layouts/pieces:
         _pieces:
           - header:
+              _global:
+                critical: yes
               _pieces:
                 - branding: {}
-          - articles/articles_introduction: { intro: '<p>Some articles' }
+          - articles/articles_introduction:
+              intro: '<p>Some articles'
+              critical: yes
           - articles/article: { title: 'Nice', content: '<p>Bob' }
           - articles/article: { title: 'Bob', content: '<p>Some nice example content' }
           - articles/article: { title: 'Cooob', content: '<p>Some nice example content' }
@@ -16,7 +20,7 @@ index:
           - articles/article: { title: 'Hehe', content: '<p>Some nice example content' }
           - footer: {}
 
-info/bob:
+info:
   _pieces:
     - layouts/pieces:
         title: 'About this style guide'

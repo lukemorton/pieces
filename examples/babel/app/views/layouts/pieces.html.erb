@@ -4,7 +4,10 @@
     <title><%= title %></title>
 
     <style>
-      <%= env['critical.css'] %>
+      <% components = config.components_in_route('index') %>
+      <% components.map { |(component, data)| component if data['critical'] }.compact.each do |component| %>
+        <%= env["components/#{component}.css"] %>
+      <% end %>
     </style>
 
     <script>
@@ -12,7 +15,7 @@
     </script>
 
     <noscript>
-      <link rel="stylesheet" href="/assets/lazy.css" />
+      <link rel="stylesheet" href="/assets/application.css" />
     </noscript>
   </head>
   <body>
@@ -22,6 +25,6 @@
       </div>
     </div>
 
-    <script src="/assets/app.js"></script>
+    <script src="/assets/app.js" defer></script>
   </body>
 </html>

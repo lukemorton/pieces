@@ -1,7 +1,6 @@
 // CSS bundles
 //
-//= link critical.css
-//= link lazy.css
+//= link application.css
 
 // JS bundles
 //
