@@ -27,6 +27,8 @@ module Pieces
         env.append_path 'app/assets/stylesheets'
         env.append_path 'app/assets'
         env.append_path 'app/views'
+        env.js_compressor = :uglify if defined? ::Uglifier
+        env.css_compressor = :scss if defined? ::Sass
       end
     end
 
