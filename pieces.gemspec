@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'tilt'
   spec.add_dependency 'thor'
   spec.add_dependency 'rack'
-  spec.add_dependency 'listen'
   spec.add_dependency 'sprockets'
 
   spec.add_development_dependency 'bundler'
