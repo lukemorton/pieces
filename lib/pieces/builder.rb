@@ -31,13 +31,19 @@ module Pieces
 
     def build_assets(files = {})
       if env['manifest.js']
-        manifest.find('manifest.js').reduce(files) do |files, file|
-          files.merge("assets/#{file.logical_path}" => { type: file.content_type, contents: file })
-        end
+        manifest.find('manifest.js').reduce(files, &method(:merge_assets_from_manifest))
       else
-        files.merge('assets/pieces.css' => { type: 'text/css', contents: env['pieces.css'] },
-                    'assets/pieces.js' => { type: 'application/js', contents: env['pieces.js'] })
+        merge_assets_from_default_location(files, env)
       end
+    end
+
+    def merge_assets_from_manifest(files, file)
+      files.merge("assets/#{file.logical_path}" => { type: file.content_type, contents: file })
+    end
+
+    def merge_assets_from_default_location(files, env)
+      files.merge('assets/pieces.css' => { type: 'text/css', contents: env['pieces.css'] },
+                  'assets/pieces.js' => { type: 'application/js', contents: env['pieces.js'] })
     end
 
     def build_routes(files = {})
