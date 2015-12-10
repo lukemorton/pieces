@@ -50,9 +50,7 @@ module Pieces
 
     def save_files(files)
       Dir.chdir(config.path) do
-        files.each do |name, file|
-          save_file(name, file)
-        end
+        files.each(&method(:save_file))
       end
     end
 
