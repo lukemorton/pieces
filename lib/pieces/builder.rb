@@ -29,16 +29,16 @@ module Pieces
       @manifest ||= Sprockets::Manifest.new(env, 'build/assets')
     end
 
-    def manifest_file_exists?
-      env['manifest.js']
-    end
-
     def build_assets(files = {})
       if manifest_file_exists?
         manifest.find('manifest.js').reduce(files, &method(:merge_assets_from_manifest))
       else
         merge_assets_from_default_location(files, env)
       end
+    end
+
+    def manifest_file_exists?
+      env['manifest.js']
     end
 
     def merge_assets_from_manifest(files, file)
